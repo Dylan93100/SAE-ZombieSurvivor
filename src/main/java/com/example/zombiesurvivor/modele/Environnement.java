@@ -21,6 +21,7 @@ public class Environnement {
         this.ajouterterrain();
         this.width = 960;
         this.height = 640;
+        System.out.println(terrain);
     }
 
     public void ajouterjoueur() {
@@ -42,4 +43,7 @@ public class Environnement {
         return personage;
     }
 
+    public Terrain getTerrain() {
+        return terrain;
+    }
 }

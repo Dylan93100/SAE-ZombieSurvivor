@@ -1,34 +1,23 @@
 package com.example.zombiesurvivor.controleur;
-import java.net.URL;
 
-import com.example.zombiesurvivor.modele.*;
+import com.example.zombiesurvivor.modele.Acteur;
+import com.example.zombiesurvivor.modele.Environnement;
+import com.example.zombiesurvivor.modele.Terrain;
 import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
-import javafx.util.Duration;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.shape.*;
-import javafx.stage.Stage;
-import javafx.scene.paint.Color;
-import com.example.zombiesurvivor.modele.Acteur;
-import com.example.zombiesurvivor.modele.Joueur;
-import com.example.zombiesurvivor.modele.Terrain;
-import com.example.zombiesurvivor.vue.JoueurVue;
-import com.example.zombiesurvivor.vue.TerrainVue;
+import javafx.util.Duration;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 public class Controleur implements Initializable {
@@ -36,8 +25,6 @@ public class Controleur implements Initializable {
     private Terrain terrain;
 
     private Environnement env;
-
-    private Joueur joueur1;
 
     private int delay=0;
 
@@ -63,6 +50,8 @@ public class Controleur implements Initializable {
     @FXML
     private Pane paneRacine;
 
+
+
     @FXML
     private BorderPane Border1;
 
@@ -73,11 +62,9 @@ public class Controleur implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.terrain = new Terrain();
-        TerrainVue terrainVue = new TerrainVue(terrain, paneTerrain);
-
         env = new Environnement();
 
-        joueur1 = new Joueur(terrain) ;
+        TerrainVue terrainVue = new TerrainVue(env.getTerrain(), paneTerrain);
 
         JoueurVue joueurVue = new JoueurVue(paneRacine,env.getPersonage());
 
@@ -86,6 +73,8 @@ public class Controleur implements Initializable {
         // demarre l'animation
 
         gameLoop.play();
+
+
 
         Border1.addEventFilter(KeyEvent.KEY_PRESSED, (key)->
         {
@@ -144,7 +133,7 @@ public class Controleur implements Initializable {
                     if(right == true) {
 
                         JoueurVue.apparanceDroite();
-                        Acteur.limitationMapX();
+                        env.getPersonage().limitationMapX();
                         env.getPersonage().seDeplpaceDroite();
                         env.getPersonage().verifGravite();
                         System.out.println(env);
@@ -156,7 +145,7 @@ public class Controleur implements Initializable {
 
                     if(left==true) {
                         JoueurVue.apparanceGauche();
-                        Acteur.limitationMapX();
+                        env.getPersonage().limitationMapX();
                         env.getPersonage().seDeplpaceGacuhe();
                         env.getPersonage().verifGravite();
 
@@ -170,15 +159,15 @@ public class Controleur implements Initializable {
                     if(up==true) {
 
                         //joueur1.seDeplpaceHaut();
-                        joueur1.verifGravite();
+                        env.getPersonage().verifGravite();
                         délaiSaut+=.25;
                         env.getPersonage().yProperty().setValue(verivSaut(Yhere, délaiSaut));
-                        joueur1.verifGravite();
+                       // joueur1.verifGravite();
                     }
 
                     else {
 
-                        Yhere=joueur1.yProperty().getValue();
+                        Yhere=env.getPersonage().yProperty().getValue();
                         délaiSaut=.0;
 
                     }
