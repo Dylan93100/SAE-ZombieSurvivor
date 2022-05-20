@@ -1,8 +1,7 @@
 package com.example.zombiesurvivor.modele;
 
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
+import com.example.zombiesurvivor.vue.JoueurVue;
 import javafx.scene.image.ImageView;
 
 public class Joueur extends Acteur{
@@ -24,19 +23,19 @@ public class Joueur extends Acteur{
         int xDest = this.xProperty().getValue()+getVitesse();
 
         if (this.terrain.tuileTraversable(xDest+27, getY())) {
+            Acteur.limitationMapX();
             this.setX(xDest);
+            this.verifGravite();
         }
-//    	else {
-//    		System.out.println(xProperty().getValue());
-//    	}
-//		System.out.println(xProperty().getValue());
     }
 
     public void seDeplpaceGacuhe () {
 
         int yDest = this.xProperty().getValue()-getVitesse();
         if (this.terrain.tuileTraversable(getX()+5, getY())) {
+            Acteur.limitationMapX();
             this.setX(yDest);
+            this.verifGravite();
         }
 
         System.out.println(xProperty().getValue());
@@ -49,7 +48,6 @@ public class Joueur extends Acteur{
         this.yProperty().setValue(this.yProperty().getValue()-getSaut()*2);
 
     }
-
 
 
 //public void attasueOutil() {

@@ -124,7 +124,7 @@ public class Controleur implements Initializable {
     }
 
     public double verivSaut(double Yhere,double délaiSaut ) {
-
+        joueur1.verifGravite();
         return(délaiSaut*délaiSaut)-20*délaiSaut+Yhere;
 
     }
@@ -140,12 +140,7 @@ public class Controleur implements Initializable {
                 (ev -> {
                     tic++;
                     if(right == true) {
-
-                        JoueurVue.apparanceDroite();
-                        Acteur.limitationMapX();
                         joueur1.seDeplpaceDroite();
-                        joueur1.verifGravite();
-
                         if(tic%15==0) {
                             animation = !animation;
                             JoueurVue.apparanceDroitecourt(animation);
@@ -153,29 +148,19 @@ public class Controleur implements Initializable {
                     }
 
                     if(left==true) {
-                        JoueurVue.apparanceGauche();
-                        Acteur.limitationMapX();
                         joueur1.seDeplpaceGacuhe();
-                        joueur1.verifGravite();
-
                         if(tic%15==0) {
                             animation = !animation;
-                            System.out.println(animation);
                             JoueurVue.apparanceGauchecourt(animation);
                         }
                     }
 
                     if(up==true) {
-
-                        //joueur1.seDeplpaceHaut();
-                        joueur1.verifGravite();
                         délaiSaut+=.25;
                         joueur1.yProperty().setValue(verivSaut(Yhere, délaiSaut));
-                        joueur1.verifGravite();
                     }
 
                     else {
-
                         Yhere=joueur1.yProperty().getValue();
                         délaiSaut=.0;
 
@@ -185,9 +170,6 @@ public class Controleur implements Initializable {
                         joueur1.setyValue(-3);
                         joueur1.verifGravite();
                     }
-                    Acteur.colis();
-                    Acteur.limitationMapX();
-                    delay++;
                     temps++;
                 })
         );
