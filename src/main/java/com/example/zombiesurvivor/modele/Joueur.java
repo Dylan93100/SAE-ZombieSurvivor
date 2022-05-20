@@ -34,6 +34,7 @@ public class Joueur extends Acteur{
         int yDest = this.xProperty().getValue()-getVitesse();
         if (this.terrain.tuileTraversable(getX()+5, getY())) {
             Acteur.limitationMapX();
+
             this.setX(yDest);
             this.verifGravite();
         }

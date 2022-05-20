@@ -1,36 +1,25 @@
 package com.example.zombiesurvivor.controleur;
 import java.net.URL;
 
-import com.example.zombiesurvivor.modele.Acteur;
 import com.example.zombiesurvivor.modele.Joueur;
 import com.example.zombiesurvivor.modele.Terrain;
 import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import java.util.ArrayList;
+
 import java.util.ResourceBundle;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.shape.*;
-import javafx.stage.Stage;
-import javafx.scene.paint.Color;
-import com.example.zombiesurvivor.modele.Acteur;
-import com.example.zombiesurvivor.modele.Joueur;
-import com.example.zombiesurvivor.modele.Terrain;
-import com.example.zombiesurvivor.vue.JoueurVue;
-import com.example.zombiesurvivor.vue.TerrainVue;
 
 
 public class Controleur implements Initializable {
@@ -41,8 +30,6 @@ public class Controleur implements Initializable {
 
     private int delay=0;
 
-    private int delaysaut =5;
-
     private Timeline gameLoop;
 
     private double Yhere;
@@ -50,6 +37,8 @@ public class Controleur implements Initializable {
     private boolean animation = false ;
 
     private int tic = 0;
+
+    private boolean isFalling = false;
 
     private int temps;
 
@@ -98,7 +87,7 @@ public class Controleur implements Initializable {
 
             if(key.getCode() == KeyCode.UP) {
                 up=true;
-
+                isFalling=false;
             }
         });
 
@@ -115,6 +104,7 @@ public class Controleur implements Initializable {
 
             if(key.getCode() == KeyCode.UP) {
                 up = false;
+                isFalling=true;
             }
 
         });
@@ -125,10 +115,15 @@ public class Controleur implements Initializable {
 
     public double verivSaut(double Yhere,double délaiSaut ) {
         joueur1.verifGravite();
-        return(délaiSaut*délaiSaut)-20*délaiSaut+Yhere;
+            return (délaiSaut * délaiSaut) - 20 * délaiSaut + Yhere;
 
     }
 
+    public void handle(MouseEvent mouseEvent) {
+        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                System.out.println("Double clicked");
+            }
+        }
 
     void initAnimation() {
         this.gameLoop = new Timeline();
@@ -155,11 +150,12 @@ public class Controleur implements Initializable {
                         }
                     }
 
-                    if(up==true) {
-                        délaiSaut+=.25;
-                        joueur1.yProperty().setValue(verivSaut(Yhere, délaiSaut));
-                    }
-
+                    //if(isFalling==false) {
+                        if (up == true) {
+                            délaiSaut += .25;
+                            joueur1.yProperty().setValue(verivSaut(Yhere, délaiSaut));
+                        }
+                   // }
                     else {
                         Yhere=joueur1.yProperty().getValue();
                         délaiSaut=.0;
@@ -170,6 +166,7 @@ public class Controleur implements Initializable {
                         joueur1.setyValue(-3);
                         joueur1.verifGravite();
                     }
+                    delay++;
                     temps++;
                 })
         );
