@@ -6,8 +6,6 @@ import java.util.concurrent.TimeUnit;
 import javafx.scene.image.ImageView;
 
 public class Joueur extends Acteur{
-    //private boolean isJumpong = false;
-
     //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
 
     public Joueur (Terrain terrain) {
@@ -22,14 +20,9 @@ public class Joueur extends Acteur{
     public void seDeplpaceDroite () {
 
         int xDest = this.xProperty().getValue()+getVitesse();
-
         if (this.terrain.tuileTraversable(xDest+27, getY())) {
             this.setX(xDest);
         }
-//    	else {
-//    		System.out.println(xProperty().getValue());
-//    	}
-//		System.out.println(xProperty().getValue());
     }
 
     public void seDeplpaceGacuhe () {

@@ -13,7 +13,6 @@ public abstract class  Acteur {
     protected Terrain terrain;
     private boolean gravite;
 
-
     public Acteur (int vie, int vitesse, int attaque, int saut,Terrain terrain){
         this.vie = vie;
         this.vitesse = vitesse;
@@ -24,6 +23,9 @@ public abstract class  Acteur {
         this.terrain = terrain;
     }
 
+    public Acteur() {
+
+    }
 
     public boolean isGravite() {
         return gravite;
@@ -38,9 +40,6 @@ public abstract class  Acteur {
         }
     }
 
-    public void collesionGauche() {
-
-    }
 
     public int getX () {
         return XProperty.get();

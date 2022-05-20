@@ -1,9 +1,7 @@
 package com.example.zombiesurvivor.controleur;
 import java.net.URL;
 
-import com.example.zombiesurvivor.modele.Acteur;
-import com.example.zombiesurvivor.modele.Joueur;
-import com.example.zombiesurvivor.modele.Terrain;
+import com.example.zombiesurvivor.modele.*;
 import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.util.Duration;
@@ -36,6 +34,8 @@ import com.example.zombiesurvivor.vue.TerrainVue;
 public class Controleur implements Initializable {
 
     private Terrain terrain;
+
+    private Environnement env;
 
     private Joueur joueur1;
 
@@ -75,9 +75,11 @@ public class Controleur implements Initializable {
         this.terrain = new Terrain();
         TerrainVue terrainVue = new TerrainVue(terrain, paneTerrain);
 
+        env = new Environnement();
+
         joueur1 = new Joueur(terrain) ;
 
-        JoueurVue joueurVue = new JoueurVue(paneRacine,joueur1);
+        JoueurVue joueurVue = new JoueurVue(paneRacine,env.getPersonage());
 
         initAnimation();
 
@@ -143,9 +145,9 @@ public class Controleur implements Initializable {
 
                         JoueurVue.apparanceDroite();
                         Acteur.limitationMapX();
-                        joueur1.seDeplpaceDroite();
-                        joueur1.verifGravite();
-
+                        env.getPersonage().seDeplpaceDroite();
+                        env.getPersonage().verifGravite();
+                        System.out.println(env);
                         if(tic%15==0) {
                             animation = !animation;
                             JoueurVue.apparanceDroitecourt(animation);
@@ -155,8 +157,8 @@ public class Controleur implements Initializable {
                     if(left==true) {
                         JoueurVue.apparanceGauche();
                         Acteur.limitationMapX();
-                        joueur1.seDeplpaceGacuhe();
-                        joueur1.verifGravite();
+                        env.getPersonage().seDeplpaceGacuhe();
+                        env.getPersonage().verifGravite();
 
                         if(tic%15==0) {
                             animation = !animation;
@@ -170,7 +172,7 @@ public class Controleur implements Initializable {
                         //joueur1.seDeplpaceHaut();
                         joueur1.verifGravite();
                         délaiSaut+=.25;
-                        joueur1.yProperty().setValue(verivSaut(Yhere, délaiSaut));
+                        env.getPersonage().yProperty().setValue(verivSaut(Yhere, délaiSaut));
                         joueur1.verifGravite();
                     }
 
@@ -181,9 +183,9 @@ public class Controleur implements Initializable {
 
                     }
 
-                    if(joueur1.isGravite()) {
-                        joueur1.setyValue(-3);
-                        joueur1.verifGravite();
+                    if(env.getPersonage().isGravite()) {
+                        env.getPersonage().setyValue(-3);
+                        env.getPersonage().verifGravite();
                     }
                     Acteur.colis();
                     Acteur.limitationMapX();
