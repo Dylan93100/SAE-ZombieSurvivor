@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.TilePane?>
@@ -16,9 +18,13 @@
         </Pane>
     </center>
    <left>
-      <VBox prefHeight="469.0" prefWidth="117.0" style="-fx-background-color: Black;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="487.0" prefWidth="117.0" style="-fx-background-color: Black;" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="69.0" prefWidth="90.0" text="Image epee" textFill="#f2efef" />
+            <ImageView fitHeight="86.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/36-363842_rpg-maker-mv-sword-png-download-rpg-maker.png" />
+               </image>
+            </ImageView>
             <Label prefHeight="17.0" prefWidth="59.0" text="bois 0/50" textFill="#fbf9f9" />
             <Label prefHeight="39.0" prefWidth="61.0" text="pierre 0/60" textFill="#fbfafa" />
             <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="116.0" text="Craft" />
