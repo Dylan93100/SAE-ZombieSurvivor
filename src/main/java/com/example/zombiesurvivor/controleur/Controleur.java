@@ -1,6 +1,5 @@
 package com.example.zombiesurvivor.controleur;
 
-import com.example.zombiesurvivor.modele.Acteur;
 import com.example.zombiesurvivor.modele.Environnement;
 import com.example.zombiesurvivor.modele.Terrain;
 import com.example.zombiesurvivor.vue.JoueurVue;
@@ -73,7 +72,6 @@ public class Controleur implements Initializable {
         // demarre l'animation
 
         gameLoop.play();
-
 
 
         Border1.addEventFilter(KeyEvent.KEY_PRESSED, (key)->
@@ -176,8 +174,6 @@ public class Controleur implements Initializable {
                         env.getPersonage().setyValue(-3);
                         env.getPersonage().verifGravite();
                     }
-                    Acteur.colis();
-                    Acteur.limitationMapX();
                     delay++;
                     temps++;
                 })

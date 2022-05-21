@@ -1,16 +1,11 @@
 package com.example.zombiesurvivor.modele;
 
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
-import javafx.scene.image.ImageView;
-
 public class Joueur extends Acteur{
     //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
 
-    public Joueur (Terrain terrain) {
+    public Joueur (Terrain terrain,Environnement env) {
 
-        super(0,2,5,3,terrain);
+        super(0,2,5,3,350,162,terrain,env);
         // this.isJumpong=  false;
         //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
 
@@ -19,29 +14,29 @@ public class Joueur extends Acteur{
 
     public void seDeplpaceDroite () {
 
-        int xDest = this.xProperty().getValue()+getVitesse();
-        if (this.terrain.tuileTraversable(xDest+27, getY())) {
-            this.setX(xDest);
+            int xDest = this.xProperty().getValue() + getVitesse();
+            if (this.terrain.tuileTraversable(xDest + 27, getY())) {
+                this.setX(xDest);
+            }
         }
-    }
 
     public void seDeplpaceGacuhe () {
 
-        int yDest = this.xProperty().getValue()-getVitesse();
-        if (this.terrain.tuileTraversable(getX()+5, getY())) {
+            int yDest = this.xProperty().getValue() - getVitesse();
+        if (this.terrain.tuileTraversable(getX() + 5, getY())) {
             this.setX(yDest);
         }
+            System.out.println(xProperty().getValue());
+        }
 
-        System.out.println(xProperty().getValue());
-
-    }
 
 
     @Override
     public void seDeplpaceHaut() {
-        this.yProperty().setValue(this.yProperty().getValue()-getSaut()*2);
 
-    }
+           this.yProperty().setValue(this.yProperty().getValue() - getSaut() * 2);
+       }
+
 
 
 

@@ -8,18 +8,24 @@ public abstract class  Acteur {
     protected static IntegerProperty YProperty;
     private int vie;
     private int vitesse;
+    private int y;
+    private int x;
     private int attaque;
     private int saut;
+
+    private Environnement env;
     protected Terrain terrain;
     private boolean gravite;
 
-    public Acteur (int vie, int vitesse, int attaque, int saut,Terrain terrain){
+    public Acteur (int vie, int vitesse, int attaque, int saut,int x,int y, Terrain terrain, Environnement env){
         this.vie = vie;
         this.vitesse = vitesse;
         this.attaque = attaque;
         this.saut = saut;
-        XProperty = new SimpleIntegerProperty(350);
-        YProperty = new SimpleIntegerProperty(162);
+        XProperty = new SimpleIntegerProperty(x);
+        YProperty = new SimpleIntegerProperty(y);
+        this.x = x;
+        this.y = y;
         this.terrain = terrain;
     }
 
@@ -40,6 +46,9 @@ public abstract class  Acteur {
         }
     }
 
+    public Environnement getEnv() {
+        return env;
+    }
 
     public int getX () {
         return XProperty.get();
@@ -96,7 +105,7 @@ public abstract class  Acteur {
 
     public void enleveVie(Acteur m) {
 
-        vie=-attaque;
+        m.vie=-this.attaque;
 
     }
 
@@ -153,11 +162,4 @@ public abstract class  Acteur {
 //                this.enleveVie(m);
 //        }
 //    }
-//}
-
-//public void gravite (){
-//
-//	while(this.YProperty.this.getCodesTuile() != 2) {
-//			this.YProperty.setValue(YProperty.getValue()-1);
-//	}
 //}
