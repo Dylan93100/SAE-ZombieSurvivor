@@ -153,8 +153,8 @@ public class Controleur implements Initializable {
                             JoueurVue.apparanceGauchecourt(animation);
                         }
                     }
-                    if (this.terrain.tuileTraversable(env.getPersonage().getY() + 32)) {
-                        System.out.println("ca marche");
+                    //if (this.terrain.tuileTraversable(env.getPersonage().yProperty().getValue() - 32)) {
+                        //System.out.println("ca marche");
                     if(up==true) {
                         env.getPersonage().seDeplpaceHaut();
                         //env.getPersonage().verifGravite();
@@ -162,7 +162,7 @@ public class Controleur implements Initializable {
                        // env.getPersonage().yProperty().setValue(verivSaut(Yhere, délaiSaut));
                         env.getPersonage().verifGravite();
                     }
-                }
+                //}
                     else {
                         System.out.println("non");
                         //Yhere=env.getPersonage().yProperty().getValue();
