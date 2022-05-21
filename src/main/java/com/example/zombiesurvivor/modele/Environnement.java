@@ -18,8 +18,8 @@ public class Environnement {
         listperso = new ArrayList<>();
         listTerrain = new ArrayList<>();
         this.terrain = new Terrain();
-        this.personage = new Joueur(terrain,null);
-        this.ennemie = new enemieNv1(terrain,null);
+        this.personage = new Joueur(terrain,350,162,null);
+        this.ennemie = new enemieNv1(terrain,350,100,null);
         this.ajouterjoueur();
         this.ajouterterrain();
         this.ajouterEnnemie();

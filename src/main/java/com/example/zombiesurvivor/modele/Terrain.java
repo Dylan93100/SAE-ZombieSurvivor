@@ -40,7 +40,9 @@ public class Terrain {
     public int tuile(int x, int y) {
         return codesTuiles[x/32+y/32*30];
     }
-
+    public int tuile(int y) {
+        return codesTuiles[y];
+    }
     public boolean tuileSol(int x, int y) {
         return this.tuile(x,y) != 1267;
     }
@@ -48,7 +50,9 @@ public class Terrain {
     public boolean tuileTraversable(int x, int y) {
         return this.tuile(x,y) == 1267;
     }
-
+    public boolean tuileTraversable(int y) {
+        return this.tuile(y) != 1267;
+    }
 
 
 //	public void getX() {

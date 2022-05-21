@@ -2,8 +2,8 @@ package com.example.zombiesurvivor.modele;
 
 public class enemieNv1 extends Acteur {
 
-    public enemieNv1(Terrain terrain, Environnement env) {
-        super(5, 5, 4, 5, 300, 100, terrain, env);
+    public enemieNv1(Terrain terrain,int x ,int y,Environnement env) {
+        super(5, 5, 4, 5, x, y, terrain, env);
     }
 
     @Override
@@ -37,6 +37,8 @@ public void attaque(){
         }
     }
 }
+    public void BFS(){
 
+    }
 }
 

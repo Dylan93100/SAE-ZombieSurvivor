@@ -22,10 +22,10 @@ public abstract class  Acteur {
         this.vitesse = vitesse;
         this.attaque = attaque;
         this.saut = saut;
-        XProperty = new SimpleIntegerProperty(x);
-        YProperty = new SimpleIntegerProperty(y);
         this.x = x;
         this.y = y;
+        XProperty = new SimpleIntegerProperty(x);
+        YProperty = new SimpleIntegerProperty(y);
         this.terrain = terrain;
     }
 
