@@ -6,12 +6,12 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
-import com.example.zombiesurvivor.modele.Terrain;
 
 public class TerrainVue {
 
     private Terrain terrain;
     private TilePane paneTerrain;
+
 
     public TerrainVue(Terrain terrain, TilePane paneTerrain) {
         super();
@@ -21,7 +21,7 @@ public class TerrainVue {
     }
 
     public void afficherTerrain() {
-        int[] codesTuiles = terrain.getCodesTuiles();
+        int[] codesTuiles =  terrain.getCodesTuiles();
 
         Image ciel = new Image(Main.class.getResource("images/cielfonce.png").toString());
         Image tileset = new Image(Main.class.getResource("images/terrainFinal.png").toString());

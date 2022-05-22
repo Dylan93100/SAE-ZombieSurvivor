@@ -3,9 +3,9 @@ package com.example.zombiesurvivor.modele;
 public class Joueur extends Acteur{
     //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
 
-    public Joueur (Terrain terrain,int x,int y,Environnement env) {
+    public Joueur (int x,int y,Environnement env) {
 
-        super(0,2,5,3,x,y,terrain,env);
+        super(5,2,5,3,x,y,env);
         // this.isJumpong=  false;
         //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
 

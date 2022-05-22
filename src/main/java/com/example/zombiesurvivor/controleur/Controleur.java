@@ -174,6 +174,14 @@ public class Controleur implements Initializable {
                         env.getPersonage().setyValue(-3);
                         env.getPersonage().verifGravite();
                     }
+                    //env.getEnnemie().attaque();
+                    //env.getEnnemie().enleveVie(env.getPersonage());
+                    //System.out.println(env.getPersonage().getVie());
+                  //  if(env.getPersonage().estMort()){
+                      //  env.getListperso().remove(env.getPersonage());
+                   // }
+                    System.out.println(env);
+
                     delay++;
                     temps++;
                 })

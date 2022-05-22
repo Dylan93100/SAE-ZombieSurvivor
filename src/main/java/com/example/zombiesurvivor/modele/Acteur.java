@@ -17,7 +17,7 @@ public abstract class  Acteur {
     protected Terrain terrain;
     private boolean gravite;
 
-    public Acteur (int vie, int vitesse, int attaque, int saut,int x,int y, Terrain terrain, Environnement env){
+    public Acteur (int vie, int vitesse, int attaque, int saut,int x,int y, Environnement env){
         this.vie = vie;
         this.vitesse = vitesse;
         this.attaque = attaque;
@@ -26,11 +26,8 @@ public abstract class  Acteur {
         this.y = y;
         XProperty = new SimpleIntegerProperty(x);
         YProperty = new SimpleIntegerProperty(y);
-        this.terrain = terrain;
-    }
-
-    public Acteur() {
-
+        this.env = env;
+        this.terrain = new Terrain();
     }
 
     public boolean isGravite() {
@@ -44,6 +41,10 @@ public abstract class  Acteur {
         else {
             this.gravite =false;
         }
+    }
+
+    public Terrain getTerrain() {
+        return terrain;
     }
 
     public Environnement getEnv() {
@@ -105,7 +106,7 @@ public abstract class  Acteur {
 
     public void enleveVie(Acteur m) {
 
-        m.vie=-this.attaque;
+        m.vie-=this.attaque;
 
     }
 
