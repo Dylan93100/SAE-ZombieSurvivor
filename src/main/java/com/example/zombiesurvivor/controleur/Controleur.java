@@ -1,7 +1,6 @@
 package com.example.zombiesurvivor.controleur;
 
-import com.example.zombiesurvivor.modele.Environnement;
-import com.example.zombiesurvivor.modele.Terrain;
+import com.example.zombiesurvivor.modele.*;
 import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.animation.KeyFrame;
@@ -24,6 +23,10 @@ public class Controleur implements Initializable {
     private Terrain terrain;
 
     private Environnement env;
+
+    //private Acteur jou;
+
+    //private Acteur enn;
 
     private int delay=0;
 
@@ -62,6 +65,9 @@ public class Controleur implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.terrain = new Terrain();
         env = new Environnement();
+
+        //jou = new Joueur(350,160,env);
+        //enn = new enemieNv1(350,160,env)
 
         TerrainVue terrainVue = new TerrainVue(env.getTerrain(), paneTerrain);
 

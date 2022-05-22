@@ -34,13 +34,14 @@ public class enemieNv1 extends Acteur {
 
     }
 public void attaque(){
-    for(Acteur m : getEnv().getListperso()){
-        if(m instanceof Joueur){
-            if((this.getX()-5<= m.getX() && m.getX()<=this.getX()+5))
-                getEnv().getEnnemie().enleveVie(getEnv().getPersonage());
+
+        for (int i = getEnv().getListperso().size()-1;i==0;i--){
+        if(getEnv().getListperso().get(i) instanceof Joueur){
+            if((this.getX()-5<= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX()<=this.getX()+5))
+                this.enleveVie(getEnv().getListperso().get(i));
         }
         if(getEnv().getPersonage().estMort()){
-            getEnv().getListperso().remove(m);
+            getEnv().getListperso().remove(getEnv().getListperso().get(i));
         }
     }
 

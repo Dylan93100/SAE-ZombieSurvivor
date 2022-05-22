@@ -28,6 +28,7 @@ public abstract class  Acteur {
         YProperty = new SimpleIntegerProperty(y);
         this.env = env;
         this.terrain = new Terrain();
+        this.env = env;
     }
 
     public boolean isGravite() {

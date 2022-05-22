@@ -1,6 +1,7 @@
 package com.example.zombiesurvivor.vue;
 
 import com.example.zombiesurvivor.Main;
+import com.example.zombiesurvivor.modele.Environnement;
 import com.example.zombiesurvivor.modele.Terrain;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -12,12 +13,14 @@ public class TerrainVue {
     private Terrain terrain;
     private TilePane paneTerrain;
 
+private Environnement env;
 
     public TerrainVue(Terrain terrain, TilePane paneTerrain) {
         super();
         this.terrain = terrain;
         this.paneTerrain = paneTerrain;
         this.afficherTerrain();
+        this.env = env;
     }
 
     public void afficherTerrain() {
