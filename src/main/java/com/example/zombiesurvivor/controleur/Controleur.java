@@ -156,17 +156,17 @@ public class Controleur implements Initializable {
                     //if (this.terrain.tuileTraversable(env.getPersonage().yProperty().getValue() - 32)) {
                         //System.out.println("ca marche");
                     if(up==true) {
-                        env.getPersonage().seDeplpaceHaut();
-                        //env.getPersonage().verifGravite();
-                       // délaiSaut+=.25;
-                       // env.getPersonage().yProperty().setValue(verivSaut(Yhere, délaiSaut));
+                        //env.getPersonage().seDeplpaceHaut();
+                        env.getPersonage().verifGravite();
+                       délaiSaut+=.25;
+                        env.getPersonage().yProperty().setValue(verivSaut(Yhere, délaiSaut));
                         env.getPersonage().verifGravite();
                     }
                 //}
                     else {
-                        System.out.println("non");
-                        //Yhere=env.getPersonage().yProperty().getValue();
-                        //délaiSaut=.0;
+                        //System.out.println("non");
+                        Yhere=env.getPersonage().yProperty().getValue();
+                        délaiSaut=.0;
 
                     }
 
