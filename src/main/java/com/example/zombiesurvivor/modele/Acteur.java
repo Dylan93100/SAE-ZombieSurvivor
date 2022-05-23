@@ -111,12 +111,6 @@ public abstract class  Acteur {
 
     }
 
-    public void gravity() {
-        if(this.yProperty().getValue()!=terrain.codesTuiles[2]) {
-            this.yProperty().setValue(this.yProperty().getValue()+5);
-        }
-    }
-
 
     public boolean estMort (){
         return this.vie<=0;

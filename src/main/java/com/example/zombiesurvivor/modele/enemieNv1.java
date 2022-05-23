@@ -41,7 +41,8 @@ public class enemieNv1 extends Acteur {
 
     }
 
-    public void attaque(JoueurVue joueurVue){
+    public void attaque(JoueurVue jou){
+
 
         for (int i = getEnv().getListperso().size()-1;i==0;i--){
         if(getEnv().getListperso().get(i) instanceof Joueur){
@@ -51,7 +52,7 @@ public class enemieNv1 extends Acteur {
         }
         if(getEnv().getPersonage().estMort()){
             getEnv().getListperso().remove(getEnv().getListperso().get(i));
-            joueurVue.imageMort();
+            jou.imageMort();
 
         }
     }

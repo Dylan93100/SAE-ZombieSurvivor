@@ -42,6 +42,7 @@ public class Controleur implements Initializable {
 
     private int temps;
 
+    private JoueurVue joueurVue;
 
 
     @FXML
@@ -135,12 +136,12 @@ public class Controleur implements Initializable {
                     this.env.getPersonage().agir();
 
 
-
-                    System.out.println(env.getPersonage().getVie());
-                    env.getEnnemie().attaque(JoueurVue );
-                    env.getEnnemie().enleveVie(env.getPersonage());
-                    System.out.println(env.getPersonage().getVie());
-                    System.out.println(env.getPersonage().getEnv());
+//
+//                    System.out.println(env.getPersonage().getVie());
+//                    env.getEnnemie().attaque(joueurVue);
+//                    env.getEnnemie().enleveVie(env.getPersonage());
+//                    System.out.println(env.getPersonage().getVie());
+//                    System.out.println(env.getPersonage().getEnv());
                     delay++;
                     temps++;
                 })

@@ -9,8 +9,6 @@ public class Inventaire {
 	public Inventaire () {
 		equipInv  = new ArrayList<>();
 		resInv  = new ArrayList<>();
-		this.equipInv = equipInv ;
-		this.resInv = resInv ;
 	}
 
 	public ArrayList<Equipement> getEquipInv() {
