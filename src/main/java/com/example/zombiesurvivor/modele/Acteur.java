@@ -136,17 +136,11 @@ public abstract class  Acteur {
         }
     }
 
-    public static void colis() {
-        if(Acteur.xProperty().getValue() ==  29112 || Acteur.xProperty().getValue() ==29120)
-            Acteur.setxValue(Acteur.xProperty().getValue()-1);
-
-    }
-
-
 
     public abstract void seDeplpaceDroite();
     public abstract void seDeplpaceGacuhe ();
     public abstract void seDeplpaceHaut ();
+    public abstract  void agir();
 
 }
 //	public Terrain getTerrain() {

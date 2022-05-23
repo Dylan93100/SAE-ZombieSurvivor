@@ -9,7 +9,7 @@ import com.example.zombiesurvivor.modele.Joueur;
 
 public class JoueurVue {
 
-    private Pane paneRacine;
+    private static Pane paneRacine;
     private Joueur joueur;
     private static ImageView backD;
     private static ImageView backG;
@@ -97,6 +97,15 @@ public class JoueurVue {
             backGr.setVisible(false);
             backG.setVisible(true);
         }
+    }
+
+    public  void imageMort() {
+
+        paneRacine.getChildren().remove(backD);
+        paneRacine.getChildren().remove(backDr);
+        paneRacine.getChildren().remove(backG);
+        paneRacine.getChildren().remove(backGr);
+
     }
 
 //	public static void limitationMapX() {

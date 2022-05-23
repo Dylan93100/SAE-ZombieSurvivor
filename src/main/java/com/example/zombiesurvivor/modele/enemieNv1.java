@@ -1,5 +1,7 @@
 package com.example.zombiesurvivor.modele;
 
+import com.example.zombiesurvivor.vue.JoueurVue;
+
 public class enemieNv1 extends Acteur {
 
 
@@ -33,15 +35,24 @@ public class enemieNv1 extends Acteur {
     public void seDeplpaceHaut() {
 
     }
-public void attaque(){
+
+    @Override
+    public void agir () {
+
+    }
+
+    public void attaque(JoueurVue joueurVue){
 
         for (int i = getEnv().getListperso().size()-1;i==0;i--){
         if(getEnv().getListperso().get(i) instanceof Joueur){
             if((this.getX()-5<= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX()<=this.getX()+5))
                 this.enleveVie(getEnv().getListperso().get(i));
+            System.out.println(getEnv());
         }
         if(getEnv().getPersonage().estMort()){
             getEnv().getListperso().remove(getEnv().getListperso().get(i));
+            joueurVue.imageMort();
+
         }
     }
 

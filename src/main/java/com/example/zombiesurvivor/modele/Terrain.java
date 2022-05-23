@@ -50,9 +50,7 @@ public class Terrain {
     public boolean tuileTraversable(int x, int y) {
         return this.tuile(x,y) == 1267;
     }
-    public boolean tuileTraversable(int y) {
-        return this.tuile(y) == 29112 || this.tuile(y) == 29120;
-    }
+
 
 
 //	public void getX() {

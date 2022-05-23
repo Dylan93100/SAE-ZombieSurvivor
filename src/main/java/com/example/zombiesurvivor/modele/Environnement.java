@@ -8,24 +8,19 @@ public class Environnement {
     private ArrayList<Acteur> listperso;
     private ArrayList<Terrain> listTerrain ;
     private Terrain terrain;
-    private Joueur personage;
-
     private enemieNv1 ennemie;
-    private int width;
-    private int height;
+    private Joueur personage;
 
     public Environnement() {
         listperso = new ArrayList<>();
         listTerrain = new ArrayList<>();
         this.terrain = new Terrain();
-        this.personage = new Joueur(350,162,null);
-        this.ennemie = new enemieNv1(100,100,null);
+        this.personage = new Joueur(350,100,this);
+        this.ennemie = new enemieNv1(350,100,this);
         this.ajouterjoueur();
         this.ajouterterrain();
         this.ajouterEnnemie();
         this.ajouterEnnemie();
-        this.width = 960;
-        this.height = 640;
         System.out.println(terrain);
     }
 
@@ -36,7 +31,7 @@ public class Environnement {
 
     public void ajouterEnnemie() {
 
-        listperso.add(ennemie);
+//        listperso.add(ennemie);
     }
 
     public void ajouterterrain() {
@@ -60,7 +55,11 @@ public class Environnement {
         return terrain;
     }
 
-    public enemieNv1 getEnnemie() {
-        return ennemie;
+    public enemieNv1 getEnnemie () {
+    return ennemie;
     }
+
+//    public enemieNv1 getEnnemie() {
+//        return ennemie;
+//    }
 }

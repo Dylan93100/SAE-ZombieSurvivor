@@ -34,7 +34,7 @@ public class Controleur implements Initializable {
 
     private Timeline gameLoop;
 
-    private double Yhere;
+
 
     private boolean animation = false ;
 
@@ -42,16 +42,13 @@ public class Controleur implements Initializable {
 
     private int temps;
 
-    private boolean up = false, down = false,left = false, right = false;
 
-    private double délaiSaut;
 
     @FXML
     private TilePane paneTerrain;
 
     @FXML
     private Pane paneRacine;
-
 
 
     @FXML
@@ -84,15 +81,15 @@ public class Controleur implements Initializable {
         {
 
             if(key.getCode() == KeyCode.RIGHT) {
-                right = true;
+                this.env.getPersonage().droite();
             }
 
             if(key.getCode() == KeyCode.LEFT) {
-                left=true;
+                this.env.getPersonage().gauche();
             }
 
             if(key.getCode() == KeyCode.UP) {
-                up=true;
+                this.env.getPersonage().haut();
 
             }
         });
@@ -101,15 +98,15 @@ public class Controleur implements Initializable {
         {
 
             if(key.getCode() == KeyCode.RIGHT) {
-                right = false;
+                this.env.getPersonage().neVaPLusADroite();
             }
 
             if(key.getCode() == KeyCode.LEFT) {
-                left=false;
+                this.env.getPersonage().neVaPLusAGauche();
             }
 
             if(key.getCode() == KeyCode.UP) {
-                up = false;
+                this.env.getPersonage().neVaPLusEnHaut();
             }
 
         });
@@ -134,60 +131,16 @@ public class Controleur implements Initializable {
                 Duration.seconds(0.01),
                 (ev -> {
                     tic++;
-                    if(right == true) {
 
-                        JoueurVue.apparanceDroite();
-                        env.getPersonage().limitationMapX();
-                        env.getPersonage().seDeplpaceDroite();
-                        env.getPersonage().verifGravite();
-                        System.out.println(env);
-                        if(tic%15==0) {
-                            animation = !animation;
-                            JoueurVue.apparanceDroitecourt(animation);
-                        }
-                    }
+                    this.env.getPersonage().agir();
 
-                    if(left==true) {
-                        JoueurVue.apparanceGauche();
-                        env.getPersonage().limitationMapX();
-                        env.getPersonage().seDeplpaceGacuhe();
-                        env.getPersonage().verifGravite();
 
-                        if(tic%15==0) {
-                            animation = !animation;
-                            System.out.println(animation);
-                            JoueurVue.apparanceGauchecourt(animation);
-                        }
-                    }
-                    //if (this.terrain.tuileTraversable(env.getPersonage().yProperty().getValue() - 32)) {
-                        //System.out.println("ca marche");
-                    if(up==true) {
-                        //env.getPersonage().seDeplpaceHaut();
-                        env.getPersonage().verifGravite();
-                       délaiSaut+=.25;
-                        env.getPersonage().yProperty().setValue(verivSaut(Yhere, délaiSaut));
-                        env.getPersonage().verifGravite();
-                    }
-                //}
-                    else {
-                        //System.out.println("non");
-                        Yhere=env.getPersonage().yProperty().getValue();
-                        délaiSaut=.0;
 
-                    }
-
-                    if(env.getPersonage().isGravite()) {
-                        env.getPersonage().setyValue(-3);
-                        env.getPersonage().verifGravite();
-                    }
-                    //env.getEnnemie().attaque();
-                    //env.getEnnemie().enleveVie(env.getPersonage());
-                    //System.out.println(env.getPersonage().getVie());
-                  //  if(env.getPersonage().estMort()){
-                      //  env.getListperso().remove(env.getPersonage());
-                   // }
-                    System.out.println(env);
-
+                    System.out.println(env.getPersonage().getVie());
+                    env.getEnnemie().attaque(JoueurVue );
+                    env.getEnnemie().enleveVie(env.getPersonage());
+                    System.out.println(env.getPersonage().getVie());
+                    System.out.println(env.getPersonage().getEnv());
                     delay++;
                     temps++;
                 })
