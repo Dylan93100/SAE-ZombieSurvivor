@@ -60,5 +60,4 @@ public class Environnement {
     public EnnemieNv1 getEnnemie() {
         return ennemie1;
     }
-
 }

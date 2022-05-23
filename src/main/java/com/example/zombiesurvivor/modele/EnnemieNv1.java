@@ -19,7 +19,7 @@ public class EnnemieNv1 extends Acteur {
     }
 
     @Override
-    public void seDeplaceGacuhe() {
+    public void seDeplaceGauche() {
         if (Math.random() * 4 > 2) {
             int yDest = this.xProperty().getValue() - getVitesse();
             if (this.terrain.tuileTraversable(getX() + 5, getY())) {

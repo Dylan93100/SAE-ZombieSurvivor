@@ -22,7 +22,6 @@ public class Controleur implements Initializable {
     private Terrain terrain;
     private Environnement env;
     private int delay=0;
-    private int delaysaut =5;
     private Timeline gameLoop;
     private double Yhere;
     private boolean animation = false ;
@@ -52,6 +51,8 @@ public class Controleur implements Initializable {
 
         // demarre l'animation
         gameLoop.play();
+
+        //Quand on presse les touches
         Border1.addEventFilter(KeyEvent.KEY_PRESSED, (key)-> {
             if(key.getCode() == KeyCode.RIGHT) {
                 right = true;
@@ -64,12 +65,13 @@ public class Controleur implements Initializable {
             }
         });
 
+        //Quand on dépresse les touches
         Border1.addEventFilter(KeyEvent.KEY_RELEASED, (key)-> {
             if(key.getCode() == KeyCode.RIGHT) {
                 right = false;
             }
             if(key.getCode() == KeyCode.LEFT) {
-                left=false;
+                left = false;
             }
             if(key.getCode() == KeyCode.UP) {
                 up = false;
@@ -89,22 +91,22 @@ public class Controleur implements Initializable {
                 Duration.seconds(0.01),
                 (ev -> {
                         tic++;
-                            if(right == true) {
+                    env.getPersonage().verifGravite();
+                    if(right == true) {
                             JoueurVue.apparanceDroite();
                             env.getPersonage().limitationMapX();
                             env.getPersonage().seDeplaceDroite();
                             env.getPersonage().verifGravite();
-                            System.out.println(env);
                             if(tic%15==0) {
                                 animation = !animation;
                                 JoueurVue.apparanceDroitecourt(animation);
                             }
                         }
-                        if(left==true) {
+                    env.getPersonage().verifGravite();
+                    if(left==true) {
                             JoueurVue.apparanceGauche();
                             env.getPersonage().limitationMapX();
-                            env.getPersonage().seDeplaceGacuhe();
-                            env.getPersonage().verifGravite();
+                            env.getPersonage().seDeplaceGauche();
 
                             if(tic%15==0) {
                                 animation = !animation;
@@ -113,10 +115,8 @@ public class Controleur implements Initializable {
                             }
                         }
                         if(up==true) {
-                            env.getPersonage().verifGravite();
                             délaiSaut+=.25;
                             env.getPersonage().yProperty().setValue(verivSaut(Yhere, délaiSaut));
-                            env.getPersonage().verifGravite();
                         }
                         else {
                             Yhere=env.getPersonage().yProperty().getValue();
@@ -124,9 +124,7 @@ public class Controleur implements Initializable {
                         }
                         if(env.getPersonage().isGravite()) {
                             env.getPersonage().setyValue(-3);
-                            env.getPersonage().verifGravite();
                         }
-                        System.out.println(env);
                         delay++;
                         temps++;
                 })

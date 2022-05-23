@@ -140,6 +140,6 @@ public abstract class Acteur {
     }
 
     public abstract void seDeplaceDroite ();
-    public abstract void seDeplaceGacuhe ();
+    public abstract void seDeplaceGauche ();
     public abstract void seDeplaceHaut ();
 }

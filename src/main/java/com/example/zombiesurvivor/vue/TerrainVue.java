@@ -38,19 +38,11 @@ private Environnement env;
                 terre.setViewport(new Rectangle2D(6,20, 32, 32));
                 paneTerrain.getChildren().add(terre);
             }
-
             else {
                 ImageView pierre = new ImageView(tileset);
                 pierre.setViewport(new Rectangle2D(3, 3, 32, 32));
                 paneTerrain.getChildren().add((pierre));
             }
         }
-
-
-
-
-
     }
-
-
 }
