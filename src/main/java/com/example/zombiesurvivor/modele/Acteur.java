@@ -137,9 +137,7 @@ public abstract class  Acteur {
     public abstract  void agir();
 
 }
-//	public Terrain getTerrain() {
-//		return terrain;
-//	}
+
 
 //    public void attaqueAlaMain(){
 //    for(Acteur m : this.terrain.getActeurs()){

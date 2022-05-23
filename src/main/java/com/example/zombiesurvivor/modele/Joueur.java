@@ -22,7 +22,7 @@ public class Joueur extends Acteur {
         super(5, 2, 5, 3, x, y, env);
         inventaire = new Inventaire();
         pierre = new Pierre();
-        vache = new Vache();
+        //vache = new Vache();
         bois = new Bois();
         System.out.println(inventaire);
     }
@@ -162,12 +162,12 @@ public class Joueur extends Acteur {
 //            inventaire.add(b);
 //        }
 //    }
-    public void craftLancepierre (){
-        Lance l = new Lance();
-        if(bois.getQuantité()==60 && pierre.getQuantité()==50 && vache.getQuantité()==30 ){
-            inventaire.getEquipInv().add(l);
-        }
-    }
+//    public void craftLancepierre (){
+//        Lance l = new Lance();
+//        if(bois.getQuantité()==60 && pierre.getQuantité()==50 && vache.getQuantité()==30 ){
+//            inventaire.getEquipInv().add(l);
+//        }
+//    }
 //    public void craftclee (){
 //        Clee c;
 //        if(inventaire.getBois==10 && inventaire.getPierre==10 && inventaire.getCuire==10){
