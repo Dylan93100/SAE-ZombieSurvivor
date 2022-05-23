@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Environnement {
 
-
     private ArrayList<Acteur> listperso;
     private ArrayList<Terrain> listTerrain ;
     private Terrain terrain;
     private Joueur personage;
 
-    private ennemieNv1 ennemie;
+    private EnnemieNv1 ennemie1;
+    private EnnemieNv2 ennemie2;
     private int width;
     private int height;
 
@@ -19,7 +19,7 @@ public class Environnement {
         listTerrain = new ArrayList<>();
         this.terrain = new Terrain();
         this.personage = new Joueur(350,162,null);
-        this.ennemie = new ennemieNv1(100,100,null);
+        this.ennemie1 = new EnnemieNv1(100,100,null);
         this.ajouterjoueur();
         this.ajouterterrain();
         this.ajouterEnnemie();
@@ -30,13 +30,11 @@ public class Environnement {
     }
 
     public void ajouterjoueur() {
-
         listperso.add(personage);
     }
 
     public void ajouterEnnemie() {
-
-        listperso.add(ennemie);
+        listperso.add(ennemie1);
     }
 
     public void ajouterterrain() {
@@ -60,7 +58,11 @@ public class Environnement {
         return terrain;
     }
 
-    public ennemieNv1 getEnnemie() {
-        return ennemie;
+    public EnnemieNv1 getEnnemie() {
+        return ennemie1;
+    }
+
+    public EnnemieNv2 getEnnemie2 () {
+        return ennemie2;
     }
 }

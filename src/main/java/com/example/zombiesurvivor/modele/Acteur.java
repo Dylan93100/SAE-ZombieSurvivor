@@ -114,7 +114,6 @@ public abstract class Acteur {
         }
     }
 
-
     public boolean estMort () {
         return this.vie <= 0;
     }
@@ -135,32 +134,12 @@ public abstract class Acteur {
     }
 
     public static void colis () {
-        if (Acteur.xProperty().getValue() == 29112 || Acteur.xProperty().getValue() == 29120)
+        if (Acteur.xProperty().getValue() == 29112 || Acteur.xProperty().getValue() == 29120){
             Acteur.setxValue(Acteur.xProperty().getValue() - 1);
-
+        }
     }
 
-
     public abstract void seDeplaceDroite ();
-
     public abstract void seDeplaceGacuhe ();
-
     public abstract void seDeplaceHaut ();
-
 }
-//	public Terrain getTerrain() {
-//		return terrain;
-//	}
-
-//    public void attaqueAlaMain(){
-//    for(Acteur m : this.terrain.getActeurs()){
-//
-//            if
-//            (		(this.getY()-1<= m.getY() && m.getY()<=this.getY()+1) &&
-//                    (this.getX()-2<= m.getX() && m.getX()<=this.getX()+2)
-//            )
-//            {
-//                this.enleveVie(m);
-//        }
-//    }
-//}

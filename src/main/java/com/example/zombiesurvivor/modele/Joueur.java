@@ -1,25 +1,19 @@
 package com.example.zombiesurvivor.modele;
 
-
 import com.example.zombiesurvivor.vue.JoueurVue;
 import javafx.scene.image.ImageView;
 
 public class Joueur extends Acteur{
-    //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
 
     public Joueur (int x,int y,Environnement env) {
         super(5,2,5,3,x,y,env);
-        // this.isJumpong=  false;
-        //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
     }
 
-
     public void seDelaceDroite () {
-
         int xDest = this.xProperty().getValue() + getVitesse();
-        if (this.terrain.tuileTraversable(xDest + 27, getY())) {
-            this.setX(xDest);
-        }
+            if (this.terrain.tuileTraversable(xDest + 27, getY())) {
+                this.setX(xDest);
+            }
     }
 
     @Override
@@ -28,13 +22,12 @@ public class Joueur extends Acteur{
     }
 
     public void seDeplaceGacuhe () {
-
         int yDest = this.xProperty().getValue() - getVitesse();
-        if (this.terrain.tuileTraversable(getX() + 5, getY())) {
-            this.setX(yDest);
-            System.out.println(xProperty().getValue());
-        }
-}
+            if (this.terrain.tuileTraversable(getX() + 5, getY())) {
+                this.setX(yDest);
+                System.out.println(xProperty().getValue());
+            }
+    }
 
 
     @Override

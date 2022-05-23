@@ -1,9 +1,8 @@
 package com.example.zombiesurvivor.modele;
 
-public class ennemieNv1 extends Acteur {
+public class EnnemieNv1 extends Acteur {
 
-
-    public ennemieNv1(int x, int y, Environnement env) {
+    public EnnemieNv1(int x, int y, Environnement env) {
         super(5, 5, 1, 5, x, y, env);
         System.out.println(getEnv());
         System.out.println(getTerrain());
