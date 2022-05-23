@@ -10,7 +10,6 @@ public class Environnement {
     private Joueur personage;
 
     private EnnemieNv1 ennemie1;
-    private EnnemieNv2 ennemie2;
     private int width;
     private int height;
 
@@ -62,7 +61,4 @@ public class Environnement {
         return ennemie1;
     }
 
-    public EnnemieNv2 getEnnemie2 () {
-        return ennemie2;
-    }
 }

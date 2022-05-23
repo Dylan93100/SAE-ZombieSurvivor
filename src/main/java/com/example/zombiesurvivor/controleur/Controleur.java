@@ -28,8 +28,8 @@ public class Controleur implements Initializable {
     private boolean animation = false ;
     private int tic = 0;
     private int temps;
-    private boolean up = false, down = false,left = false, right = false;
     private double délaiSaut;
+    private boolean up, right, left;
 
     @FXML
     private TilePane paneTerrain;
