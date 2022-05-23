@@ -5,10 +5,15 @@ import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -112,9 +117,19 @@ public class Controleur implements Initializable {
 
         });
 
+        paneRacine.setOnMouseEntered(new EventHandler() {
+            @Override
+            public void handle(Event arg0) {
+                Image image = new Image("images/doitecourt.png");
+                paneRacine.getScene().setCursor(new ImageCursor(image));
+            }
+        });
+
 
 
     }
+
+
 
     public double verivSaut(double Yhere,double délaiSaut ) {
 
