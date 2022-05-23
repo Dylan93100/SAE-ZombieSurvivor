@@ -54,8 +54,8 @@ public class enemieNv1 extends Acteur {
             getEnv().getListperso().remove(getEnv().getListperso().get(i));
             jou.imageMort();
 
+            }
         }
-    }
 
     }
     public void BFS(){

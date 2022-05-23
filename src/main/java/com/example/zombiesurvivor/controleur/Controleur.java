@@ -120,8 +120,8 @@ public class Controleur implements Initializable {
         paneRacine.setOnMouseEntered(new EventHandler() {
             @Override
             public void handle(Event arg0) {
-                Image image = new Image("images/doitecourt.png");
-                paneRacine.getScene().setCursor(new ImageCursor(image));
+                Image cursor = new Image("images/doitecourt.png");
+                paneRacine.getScene().setCursor(new ImageCursor(cursor));
             }
         });
 

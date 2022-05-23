@@ -12,7 +12,6 @@ public abstract class  Acteur {
     private int x;
     private int attaque;
     private int saut;
-
     private Environnement env;
     protected Terrain terrain;
     private boolean gravite;
@@ -43,7 +42,6 @@ public abstract class  Acteur {
             this.gravite =false;
         }
     }
-
     public Terrain getTerrain() {
         return terrain;
     }
@@ -63,7 +61,6 @@ public abstract class  Acteur {
     public void setX(int newX)  {
         XProperty.setValue(newX);
     }
-
 
     public static IntegerProperty xProperty () {
         return XProperty;
@@ -106,15 +103,13 @@ public abstract class  Acteur {
     }
 
     public void enleveVie(Acteur m) {
-
         m.vie-=this.attaque;
-
     }
-
 
     public boolean estMort (){
         return this.vie<=0;
     }
+
     public boolean estVivant (){
         return this.vie>0;
     }
@@ -130,11 +125,13 @@ public abstract class  Acteur {
         }
     }
 
-
     public abstract void seDeplpaceDroite();
+
     public abstract void seDeplpaceGacuhe ();
+
     public abstract void seDeplpaceHaut ();
-    public abstract  void agir();
+
+    public abstract void agir();
 
 }
 

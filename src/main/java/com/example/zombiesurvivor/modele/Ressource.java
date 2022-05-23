@@ -28,7 +28,7 @@ public class Ressource extends Item {
 
 	@Override
 	public String toString() {
-		return "Ressource [Joueur a  +" + toString() +"]";
+		return "Ressource [Joueur a    +" + toString() +"]";
 	}
 	
 	
