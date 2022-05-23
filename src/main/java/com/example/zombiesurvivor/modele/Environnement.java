@@ -10,7 +10,7 @@ public class Environnement {
     private Terrain terrain;
     private Joueur personage;
 
-    private enemieNv1 ennemie;
+    private ennemieNv1 ennemie;
     private int width;
     private int height;
 
@@ -19,7 +19,7 @@ public class Environnement {
         listTerrain = new ArrayList<>();
         this.terrain = new Terrain();
         this.personage = new Joueur(350,162,null);
-        this.ennemie = new enemieNv1(100,100,null);
+        this.ennemie = new ennemieNv1(100,100,null);
         this.ajouterjoueur();
         this.ajouterterrain();
         this.ajouterEnnemie();
@@ -60,7 +60,7 @@ public class Environnement {
         return terrain;
     }
 
-    public enemieNv1 getEnnemie() {
+    public ennemieNv1 getEnnemie() {
         return ennemie;
     }
 }

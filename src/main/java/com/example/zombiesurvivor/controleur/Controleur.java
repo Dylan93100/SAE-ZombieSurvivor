@@ -138,7 +138,7 @@ public class Controleur implements Initializable {
 
                         JoueurVue.apparanceDroite();
                         env.getPersonage().limitationMapX();
-                        env.getPersonage().seDeplpaceDroite();
+                        env.getPersonage().seDeplaceDroite();
                         env.getPersonage().verifGravite();
                         System.out.println(env);
                         if(tic%15==0) {
@@ -150,7 +150,7 @@ public class Controleur implements Initializable {
                     if(left==true) {
                         JoueurVue.apparanceGauche();
                         env.getPersonage().limitationMapX();
-                        env.getPersonage().seDeplpaceGacuhe();
+                        env.getPersonage().seDeplaceGacuhe();
                         env.getPersonage().verifGravite();
 
                         if(tic%15==0) {

@@ -1,65 +1,47 @@
 package com.example.zombiesurvivor.modele;
 
-<<<<<<< HEAD
-=======
 
 import com.example.zombiesurvivor.vue.JoueurVue;
 import javafx.scene.image.ImageView;
 
->>>>>>> origin/merge
 public class Joueur extends Acteur{
     //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
 
     public Joueur (int x,int y,Environnement env) {
-
         super(5,2,5,3,x,y,env);
         // this.isJumpong=  false;
         //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
-
     }
 
 
-    public void seDeplpaceDroite () {
+    public void seDelaceDroite () {
 
-<<<<<<< HEAD
         int xDest = this.xProperty().getValue() + getVitesse();
         if (this.terrain.tuileTraversable(xDest + 27, getY())) {
-=======
-        int xDest = this.xProperty().getValue()+getVitesse();
-
-        if (this.terrain.tuileTraversable(xDest+27, getY())) {
-            Acteur.limitationMapX();
->>>>>>> origin/merge
             this.setX(xDest);
-            this.verifGravite();
         }
     }
 
-    public void seDeplpaceGacuhe () {
+    @Override
+    public void seDeplaceDroite () {
 
-<<<<<<< HEAD
-            int yDest = this.xProperty().getValue() - getVitesse();
+    }
+
+    public void seDeplaceGacuhe () {
+
+        int yDest = this.xProperty().getValue() - getVitesse();
         if (this.terrain.tuileTraversable(getX() + 5, getY())) {
-=======
-        int yDest = this.xProperty().getValue()-getVitesse();
-        if (this.terrain.tuileTraversable(getX()+5, getY())) {
-            Acteur.limitationMapX();
-
->>>>>>> origin/merge
             this.setX(yDest);
-            this.verifGravite();
-        }
             System.out.println(xProperty().getValue());
         }
-
+}
 
 
     @Override
-    public void seDeplpaceHaut() {
-
+    public void seDeplaceHaut () {
            this.yProperty().setValue(this.yProperty().getValue() - getSaut() * 2);
-       }
-
+    }
+}
 
 
 //public void attasueOutil() {
@@ -94,4 +76,4 @@ public class Joueur extends Acteur{
 //
 //
 //
-}
+

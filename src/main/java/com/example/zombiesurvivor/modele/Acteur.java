@@ -3,7 +3,7 @@ package com.example.zombiesurvivor.modele;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
-public abstract class  Acteur {
+public abstract class Acteur {
     protected static IntegerProperty XProperty;
     protected static IntegerProperty YProperty;
     private int vie;
@@ -17,7 +17,7 @@ public abstract class  Acteur {
     protected Terrain terrain;
     private boolean gravite;
 
-    public Acteur (int vie, int vitesse, int attaque, int saut,int x,int y, Environnement env){
+    public Acteur (int vie, int vitesse, int attaque, int saut, int x, int y, Environnement env) {
         this.vie = vie;
         this.vitesse = vitesse;
         this.attaque = attaque;
@@ -31,24 +31,24 @@ public abstract class  Acteur {
         this.env = env;
     }
 
-    public boolean isGravite() {
+    public boolean isGravite () {
         return gravite;
     }
 
-    public void verifGravite() {
-        if(!terrain.tuileSol(this.getX(), this.getY()+32)) {
+    public void verifGravite () {
+        if (!terrain.tuileSol(this.getX(), this.getY() + 32)) {
             this.gravite = true;
         }
         else {
-            this.gravite =false;
+            this.gravite = false;
         }
     }
 
-    public Terrain getTerrain() {
+    public Terrain getTerrain () {
         return terrain;
     }
 
-    public Environnement getEnv() {
+    public Environnement getEnv () {
         return env;
     }
 
@@ -60,10 +60,9 @@ public abstract class  Acteur {
         return YProperty.get();
     }
 
-    public void setX(int newX)  {
+    public void setX (int newX) {
         XProperty.setValue(newX);
     }
-
 
     public static IntegerProperty xProperty () {
         return XProperty;
@@ -73,80 +72,80 @@ public abstract class  Acteur {
         return YProperty;
     }
 
-    public int getVitesse() {
+    public int getVitesse () {
         return vitesse;
     }
 
-    public void setVitesse(int vitesse) {
+    public void setVitesse (int vitesse) {
         this.vitesse = vitesse;
     }
 
-    public int getSaut() {
+    public int getSaut () {
         return saut;
     }
 
-    public void setSaut(int saut) {
+    public void setSaut (int saut) {
         this.saut = saut;
     }
 
-    public void setyValue(int n ) {
-        this.yProperty().setValue(this.yProperty().getValue()-n);
+    public void setyValue (int n) {
+        this.yProperty().setValue(this.yProperty().getValue() - n);
     }
 
-    public static void setxValue(int n ) {
-        xProperty().setValue(xProperty().getValue()-n);
+    public static void setxValue (int n) {
+        xProperty().setValue(xProperty().getValue() - n);
     }
 
-    public int getVie() {
+    public int getVie () {
         return vie;
     }
 
-    public int getAttaque() {
+    public int getAttaque () {
         return attaque;
     }
 
-    public void enleveVie(Acteur m) {
-
-        m.vie-=this.attaque;
-
+    public void enleveVie (Acteur m) {
+        m.vie -= this.attaque;
     }
 
-    public void gravity() {
-        if(this.yProperty().getValue()!=terrain.codesTuiles[2]) {
-            this.yProperty().setValue(this.yProperty().getValue()+5);
+    public void gravity () {
+        if (this.yProperty().getValue() != terrain.codesTuiles[2]) {
+            this.yProperty().setValue(this.yProperty().getValue() + 5);
         }
     }
 
 
-    public boolean estMort (){
-        return this.vie<=0;
-    }
-    public boolean estVivant (){
-        return this.vie>0;
+    public boolean estMort () {
+        return this.vie <= 0;
     }
 
-    public static void limitationMapX() {
-        if(Acteur.xProperty().getValue()>935) {
-            Acteur.setxValue(3);
-            System.out.println("Vous avez atteint la limte de la map");
+    public boolean estVivant () {
+        return this.vie > 0;
+    }
+
+    public static void limitationMapX () {
+        if (Acteur.xProperty().getValue() > 935) {
+                Acteur.setxValue(3);
+                System.out.println("Vous avez atteint la limte de la map");
         }
-        if(Acteur.xProperty().getValue()<-5) {
-            Acteur.setxValue(-3);
-            System.out.println("Vous avez atteint la limte de la map");
+        if (Acteur.xProperty().getValue() < -5) {
+                Acteur.setxValue(-3);
+                System.out.println("Vous avez atteint la limte de la map");
         }
     }
 
-    public static void colis() {
-        if(Acteur.xProperty().getValue() ==  29112 || Acteur.xProperty().getValue() ==29120)
-            Acteur.setxValue(Acteur.xProperty().getValue()-1);
+    public static void colis () {
+        if (Acteur.xProperty().getValue() == 29112 || Acteur.xProperty().getValue() == 29120)
+            Acteur.setxValue(Acteur.xProperty().getValue() - 1);
 
     }
 
 
+    public abstract void seDeplaceDroite ();
 
-    public abstract void seDeplpaceDroite();
-    public abstract void seDeplpaceGacuhe ();
-    public abstract void seDeplpaceHaut ();
+    public abstract void seDeplaceGacuhe ();
+
+    public abstract void seDeplaceHaut ();
 
 }
 //	public Terrain getTerrain() {
