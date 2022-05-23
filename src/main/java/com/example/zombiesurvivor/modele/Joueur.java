@@ -1,5 +1,12 @@
 package com.example.zombiesurvivor.modele;
 
+<<<<<<< HEAD
+=======
+
+import com.example.zombiesurvivor.vue.JoueurVue;
+import javafx.scene.image.ImageView;
+
+>>>>>>> origin/merge
 public class Joueur extends Acteur{
     //ArrayList<Inventaire> inventaire = new ArrayList<Inventaire>();
 
@@ -14,17 +21,33 @@ public class Joueur extends Acteur{
 
     public void seDeplpaceDroite () {
 
+<<<<<<< HEAD
         int xDest = this.xProperty().getValue() + getVitesse();
         if (this.terrain.tuileTraversable(xDest + 27, getY())) {
+=======
+        int xDest = this.xProperty().getValue()+getVitesse();
+
+        if (this.terrain.tuileTraversable(xDest+27, getY())) {
+            Acteur.limitationMapX();
+>>>>>>> origin/merge
             this.setX(xDest);
+            this.verifGravite();
         }
     }
 
     public void seDeplpaceGacuhe () {
 
+<<<<<<< HEAD
             int yDest = this.xProperty().getValue() - getVitesse();
         if (this.terrain.tuileTraversable(getX() + 5, getY())) {
+=======
+        int yDest = this.xProperty().getValue()-getVitesse();
+        if (this.terrain.tuileTraversable(getX()+5, getY())) {
+            Acteur.limitationMapX();
+
+>>>>>>> origin/merge
             this.setX(yDest);
+            this.verifGravite();
         }
             System.out.println(xProperty().getValue());
         }
@@ -36,7 +59,6 @@ public class Joueur extends Acteur{
 
            this.yProperty().setValue(this.yProperty().getValue() - getSaut() * 2);
        }
-
 
 
 
