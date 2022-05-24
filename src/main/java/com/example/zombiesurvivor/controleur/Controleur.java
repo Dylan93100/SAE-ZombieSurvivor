@@ -6,19 +6,13 @@ import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
@@ -62,7 +56,19 @@ public class Controleur implements Initializable {
     private Pane paneRacine;
 
     @FXML
-    private Label getDuBois;
+    private Label ho;
+
+    @FXML
+    private Label boisBesoins;
+
+    @FXML
+    private Label qantitePierre;
+
+    @FXML
+    private Label viandeBesoins;
+
+    @FXML
+    private Label pierreBesoins;
 
     @FXML
     private BorderPane Border1;
@@ -138,18 +144,23 @@ public class Controleur implements Initializable {
 
     }
 
-    @FXML
-    void craftBotte(ActionEvent event) {
-    }
+//    @FXML
+//    void craftBotte(ActionEvent event) {
+//
+//        env.getPersonage().getViande().augmente();
+//
+//
+//    }
 
     @FXML
     void craftEpee(ActionEvent event) {
-        env.getPersonage().getPierre().augmente();
+        env.getPersonage().getBois().augmente();
         System.out.println(env.getPersonage().getPierre().getQuantité());
     }
 
     @FXML
-    void craftLance(ActionEvent event) {
+    void craftLancepierre(ActionEvent event) {
+        env.getPersonage().getPierre().augmente();
         env.getPersonage().craftLancepierre();
 
     }
@@ -165,11 +176,14 @@ public class Controleur implements Initializable {
                 (ev -> {
                     tic++;
 
-
-
+                    this.qantitePierre.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
+                    this.pierreBesoins.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
+                    this.boisBesoins.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
+                    this.viandeBesoins.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
                     this.env.getPersonage().agir();
-                    StringProperty pourLeBind = new SimpleStringProperty(String.valueOf(env.getPersonage().getBois().quantitéProperty()));
-                    pourLeBind.bind(getDuBois.textProperty());
+
+//                    StringProperty pourLeBind = new SimpleStringProperty(String.valueOf(env.getPersonage().getBois().quantitéProperty()));
+//                    pourLeBind.bind(getDuBois.textProperty());
 
 //
 //                    System.out.println(env.getPersonage().getVie());

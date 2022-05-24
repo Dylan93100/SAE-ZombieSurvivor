@@ -2,6 +2,7 @@ package com.example.zombiesurvivor.modele;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 
 public class Ressource extends Item {
 

@@ -7,8 +7,8 @@ public class Viande extends Ressource {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Viande [" + super.getQuantité() ;
-	}
+//	@Override
+//	public String toString() {
+//		return "Viande [" + super.getQuantité() ;
+//	}
 }

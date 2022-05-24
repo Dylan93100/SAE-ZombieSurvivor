@@ -181,7 +181,7 @@ public class Joueur extends Acteur {
         return bois;
     }
 
-    public Viande getVache () {
+    public Viande getViande () {
         return vache;
     }
 
