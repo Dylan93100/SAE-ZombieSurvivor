@@ -6,6 +6,9 @@ public class Lance extends Equipement {
 		super(4);
 		
 	}
-	
+	@Override
+	public String toString() {
+		return "lance";
+	}
 	
 }

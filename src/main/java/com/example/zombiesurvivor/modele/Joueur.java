@@ -8,6 +8,12 @@ public class Joueur extends Acteur {
     Pierre pierre;
     Bois bois;
     Viande vache;
+    boolean ok;
+
+     Epee p = new Epee();
+     Botte b = new Botte();
+     Lance l = new Lance();
+
     private int tic = 0;
     private boolean animation = false;
     private boolean up = false, down = false, left = false, right = false;
@@ -146,35 +152,41 @@ public class Joueur extends Acteur {
 
     public void craftEpee (InventaireVue inventaireVue) {
 
-        Epee p = new Epee();
-
+        System.out.println(inventaire.toString());
+       if(!inventaire.getEquipInv().contains(p)){
         if (pierre.getQuantité() >= 40 && bois.getQuantité() >= 60 ) {
             inventaire.getEquipInv().add(p);
             pierre.setQuantité(pierre.getQuantité()-40);
             bois.setQuantité(bois.getQuantité()-60);
                 inventaireVue.aquesitionDeLepee();
+            System.out.println(inventaire.toString());
+            }
+        }
+    }
+    public void craftBotte (InventaireVue inventaireVue) {
+
+                if (!inventaire.getEquipInv().contains(b)) {
+                if (vache.getQuantité() >= 10 && bois.getQuantité() >= 40) {
+                    inventaire.getEquipInv().add(b);
+                    bois.setQuantité(bois.getQuantité() - 40);
+                    vache.setQuantité(vache.getQuantité() - 10);
+                    inventaireVue.aquesitionDeBotte();
+                    setVitesse(getVitesse() + 2);
+                }
         }
     }
 
-    public void craftBotte (InventaireVue inventaireVue){
-        Botte b = new Botte();
-        if(vache.getQuantité()>=10 && bois.getQuantité()>=40 ){
-            inventaire.getEquipInv().add(b);
-            bois.setQuantité(bois.getQuantité()-60);
-            vache.setQuantité(vache.getQuantité()-10);
-                inventaireVue.aquesitionDeBotte();
-                    setVitesse(getVitesse()+2);
-        }
-    }
     public void craftLancepierre (InventaireVue inventaireVue){
-        Lance l = new Lance();
-        if(bois.getQuantité()>=60 && pierre.getQuantité()>=50 && vache.getQuantité()>=30 ){
-            inventaire.getEquipInv().add(l);
-            bois.setQuantité(pierre.getQuantité()-60);
-            pierre.setQuantité(bois.getQuantité()-50);
-            vache.setQuantité(bois.getQuantité()-30);
-            inventaireVue.aquesitionDeLance();
-        }
+
+                    if(!inventaire.getEquipInv().contains(l)){
+                    if (bois.getQuantité() >= 30 && pierre.getQuantité() >= 50 && vache.getQuantité() >= 30) {
+                        inventaire.getEquipInv().add(l);
+                        bois.setQuantité(bois.getQuantité() - 30);
+                        pierre.setQuantité(pierre.getQuantité() - 50);
+                        vache.setQuantité(vache.getQuantité() - 30);
+                        inventaireVue.aquesitionDeLance();
+                    }
+                }
     }
 //    public void craftclee (){
 //        Clee c;

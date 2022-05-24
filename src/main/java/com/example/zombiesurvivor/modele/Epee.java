@@ -6,7 +6,11 @@ public class Epee extends Equipement {
 		super(7);
 		// TODO Auto-generated constructor stub
 	}
-
+	public boolean Siepee(Equipement r) {
+		if(r instanceof Epee) {
+		}
+		return true ;
+	}
 	@Override
 	public String toString() {
 		return "Epee";

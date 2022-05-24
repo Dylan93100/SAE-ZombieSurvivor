@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
@@ -23,18 +22,18 @@
             <ImageView fitHeight="86.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
 
             </ImageView>
-            <Label prefHeight="17.0" prefWidth="59.0" text="bois 0/50" textFill="#fbf9f9" />
+            <Label fx:id="qantiteBois" prefHeight="17.0" prefWidth="59.0" text="0" textFill="#fbf9f9" />
             <Label prefHeight="39.0" prefWidth="61.0" text="pierre 0/60" textFill="#fbfafa" />
-            <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="116.0" text="Craft" />
+            <Button mnemonicParsing="false" onAction="#craftEpee" prefHeight="33.0" prefWidth="116.0" text="Craft" />
             <Label prefHeight="48.0" prefWidth="96.0" text="    image botte" textFill="#fbfafa" />
-            <Label prefHeight="27.0" prefWidth="79.0" text="viande 0/5" textFill="#f4f4f4" />
+            <Label fx:id="qantiteViand" prefHeight="27.0" prefWidth="79.0" text="0" textFill="#f4f4f4" />
             <Label prefHeight="27.0" prefWidth="61.0" text="bois 0/30" textFill="#f8f6f6" />
-            <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" text="Craft botte" />
+            <Button mnemonicParsing="false" onAction="#craftBotte" prefHeight="32.0" prefWidth="118.0" text="Craft botte" />
             <Label prefHeight="52.0" prefWidth="107.0" text="image lance pierre" textFill="#fdf9f9" />
-            <Label prefHeight="17.0" prefWidth="73.0" text="bois 0/40" textFill="#f6f5f5" />
+            <Label fx:id="qantitePierre" prefHeight="17.0" prefWidth="73.0" text="0" textFill="#f6f5f5" />
             <Label prefHeight="17.0" prefWidth="64.0" text="pierre 0/30" textFill="#fbf9f9" />
             <Label text="viande 0/6" textFill="#f4f2f2" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Craft lance pirre" />
+            <Button mnemonicParsing="false" onAction="#craftLancepierre" prefHeight="25.0" prefWidth="115.0" text="Craft lance pirre" />
          </children>
       </VBox>
    </left>

@@ -1,6 +1,7 @@
 package com.example.zombiesurvivor.controleur;
 
-import com.example.zombiesurvivor.modele.*;
+import com.example.zombiesurvivor.modele.Environnement;
+import com.example.zombiesurvivor.modele.Terrain;
 import com.example.zombiesurvivor.vue.InventaireVue;
 import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
@@ -12,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Camera;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -74,10 +74,10 @@ public class Controleur implements Initializable {
     private Label pierreBesoins;
 
     @FXML
-    private Label qantiteViande;
+    private Label qantiteBois;
 
     @FXML
-    private Label qantiteBois;
+    private Label qantiteViand;
 
 
     @FXML
@@ -111,15 +111,15 @@ public class Controleur implements Initializable {
         Border1.addEventFilter(KeyEvent.KEY_PRESSED, (key)->
         {
 
-            if(key.getCode() == KeyCode.RIGHT) {
+            if(key.getCode() == KeyCode.D) {
                 this.env.getPersonage().droite();
             }
 
-            if(key.getCode() == KeyCode.LEFT) {
+            if(key.getCode() == KeyCode.Q) {
                 this.env.getPersonage().gauche();
             }
 
-            if(key.getCode() == KeyCode.UP) {
+            if(key.getCode() == KeyCode.Z) {
                 this.env.getPersonage().haut();
 
             }
@@ -128,15 +128,15 @@ public class Controleur implements Initializable {
         Border1.addEventFilter(KeyEvent.KEY_RELEASED, (key)->
         {
 
-            if(key.getCode() == KeyCode.RIGHT) {
+            if(key.getCode() == KeyCode.D) {
                 this.env.getPersonage().neVaPLusADroite();
             }
 
-            if(key.getCode() == KeyCode.LEFT) {
+            if(key.getCode() == KeyCode.Q) {
                 this.env.getPersonage().neVaPLusAGauche();
             }
 
-            if(key.getCode() == KeyCode.UP) {
+            if(key.getCode() == KeyCode.Z) {
                 this.env.getPersonage().neVaPLusEnHaut();
             }
 
@@ -156,19 +156,19 @@ public class Controleur implements Initializable {
 
     @FXML
     void craftBotte(ActionEvent event) {
-        env.getPersonage().getViande().augmente();
+        env.getPersonage().getViande().setQuantité(80);
         env.getPersonage().craftBotte(inventaireVue);
     }
 
     @FXML
     void craftEpee(ActionEvent event) {
-        env.getPersonage().getBois().augmente();
+        env.getPersonage().getBois().setQuantité(70);
         env.getPersonage().craftEpee(inventaireVue);
     }
 
     @FXML
     void craftLancepierre(ActionEvent event) {
-        env.getPersonage().getPierre().augmente();
+        env.getPersonage().getPierre().setQuantité(100);
         env.getPersonage().craftLancepierre(inventaireVue);
 
     }
@@ -184,21 +184,19 @@ public class Controleur implements Initializable {
                 (ev -> {
                     tic++;
 
-                    final Camera camera = new PerspectiveCamera(true);
+                     Camera camera = new PerspectiveCamera(true);
                     camera.setTranslateX(env.getPersonage().getX());
                     camera.setTranslateY(env.getPersonage().getY());
-//                    scene.setCamera(camera);
+                  //  scene.setCamera(camera);
 
                     this.qantitePierre.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
                     this.qantiteBois.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
-                    this.qantiteViande.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
-                    this.pierreBesoins.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
-                    this.boisBesoins.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
-                    this.viandeBesoins.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
+                    this.qantiteViand.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
+                   // this.pierreBesoins.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
+                    //this.boisBesoins.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
+                    //this.viandeBesoins.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
                     this.env.getPersonage().agir();
 
-//                    StringProperty pourLeBind = new SimpleStringProperty(String.valueOf(env.getPersonage().getBois().quantitéProperty()));
-//                    pourLeBind.bind(getDuBois.textProperty());
 
 //
 //                    System.out.println(env.getPersonage().getVie());

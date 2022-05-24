@@ -3,14 +3,8 @@ package com.example.zombiesurvivor;
 import com.example.zombiesurvivor.modele.Environnement;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Camera;
-import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 
