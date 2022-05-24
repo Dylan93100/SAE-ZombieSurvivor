@@ -5,12 +5,15 @@ import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.ImageCursor;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -57,6 +60,8 @@ public class Controleur implements Initializable {
     @FXML
     private Pane paneRacine;
 
+    @FXML
+    private Label getDuBois;
 
     @FXML
     private BorderPane Border1;
@@ -130,15 +135,14 @@ public class Controleur implements Initializable {
 
     }
 
-
-
     @FXML
     void craftBotte(ActionEvent event) {
     }
 
     @FXML
     void craftEpee(ActionEvent event) {
-        System.out.println(env.getPersonage().getInventaire());
+        env.getPersonage().getPierre().augmente();
+        System.out.println(env.getPersonage().getPierre().getQuantité());
     }
 
     @FXML
@@ -158,8 +162,11 @@ public class Controleur implements Initializable {
                 (ev -> {
                     tic++;
 
-                    this.env.getPersonage().agir();
 
+
+                    this.env.getPersonage().agir();
+                    StringProperty pourLeBind = new SimpleStringProperty(String.valueOf(env.getPersonage().getBois().quantitéProperty()));
+                    pourLeBind.bind(getDuBois.textProperty());
 
 //
 //                    System.out.println(env.getPersonage().getVie());
@@ -167,7 +174,6 @@ public class Controleur implements Initializable {
 //                    env.getEnnemie().enleveVie(env.getPersonage());
 //                    System.out.println(env.getPersonage().getVie());
 //                    System.out.println(env.getPersonage().getEnv());
-                    delay++;
                     temps++;
                 })
         );

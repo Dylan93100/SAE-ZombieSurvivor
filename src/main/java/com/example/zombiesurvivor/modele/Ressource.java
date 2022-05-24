@@ -1,29 +1,36 @@
 package com.example.zombiesurvivor.modele;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Ressource extends Item {
 
 	private int pv ;
-	private int quantité ;
+	private IntegerProperty quantité ;
 	
 	public Ressource (int pv ) {
 		this.pv = pv ;
-		this.quantité = 0 ;
+		quantité = new SimpleIntegerProperty();
 	}
 	public int getPv() {
 		return pv;
 	}
 
-	public int getQuantité() {
+	public int getQuantité () {
+		return quantité.get();
+	}
+
+	public IntegerProperty quantitéProperty () {
 		return quantité;
 	}
 
 	public void augmente() {
-		quantité += 10 ;
+		setQuantité(getQuantité()+10);;
 
 	}
 
 	public void setQuantité (int quantité) {
-		this.quantité = quantité;
+		this.quantité.set(quantité);
 	}
 
 	@Override

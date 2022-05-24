@@ -18,6 +18,11 @@
         <Pane fx:id="paneRacine" prefHeight="511.0" prefWidth="596.0" BorderPane.alignment="CENTER">
             <children>
                 <TilePane fx:id="paneTerrain" prefColumns="30" prefHeight="640.0" prefRows="0" prefWidth="960.0" style="-fx-background-color: white;" />
+            <ImageView fitHeight="73.0" fitWidth="377.0" pickOnBounds="true" preserveRatio="true" translateX="249.0" translateY="450.0">
+               <image>
+                  <Image url="@../../../../../src/main/resources/com/example/zombiesurvivor/images/inventaire.png" />
+               </image>
+            </ImageView>
             </children>
         </Pane>
     </center>
@@ -28,7 +33,7 @@
                <image>
                   <Image url="@../../../../../src/main/resources/com/example/zombiesurvivor/images/Epee.png" />
                </image></ImageView>
-            <Label prefHeight="17.0" prefWidth="85.0" text="bois 0/50" textFill="#fbf9f9" />
+            <Label fx:id="getDuBois" prefHeight="17.0" prefWidth="85.0" text="bois 0/50" textFill="#fbf9f9" />
             <Label prefHeight="39.0" prefWidth="82.0" text="pierre 0/60" textFill="#fbfafa" />
             <Button fx:id="crEppee" mnemonicParsing="false" onAction="#craftEpee" prefHeight="33.0" prefWidth="116.0" text="CraftEpee" />
             <ImageView fitHeight="72.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
