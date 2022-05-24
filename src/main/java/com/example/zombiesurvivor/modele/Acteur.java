@@ -94,8 +94,6 @@ public abstract class  Acteur {
         this.yProperty().setValue(this.yProperty().getValue()-n);
     }
 
-
-
     public int getVie() {
         return vie;
     }

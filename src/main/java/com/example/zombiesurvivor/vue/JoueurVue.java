@@ -99,7 +99,7 @@ public class JoueurVue {
         }
     }
 
-    public  void imageMort() {
+    public void imageMort() {
 
         paneRacine.getChildren().remove(backD);
         paneRacine.getChildren().remove(backDr);
@@ -107,17 +107,5 @@ public class JoueurVue {
         paneRacine.getChildren().remove(backGr);
 
     }
-
-//	public static void limitationMapX() {
-//		if(Joueur.xProperty().getValue()>935) {
-//			Joueur.setxValue(3);
-//			System.out.println("Vous avez atteint la limte de la map");
-//		}
-//		if(Joueur.xProperty().getValue()<-5) {
-//			Joueur.setxValue(-3);
-//			System.out.println("Vous avez atteint la limte de la map");
-//		}
-//	}
-//
-
+    
 }

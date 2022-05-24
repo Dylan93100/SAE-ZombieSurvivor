@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.transform.Transform;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -29,17 +30,11 @@ public class Controleur implements Initializable {
 
     private Environnement env;
 
-    //private Acteur jou;
-
-    //private Acteur enn;
-
     private int delay=0;
 
     private int delaysaut =5;
 
     private Timeline gameLoop;
-
-
 
     private boolean animation = false ;
 
@@ -54,25 +49,15 @@ public class Controleur implements Initializable {
 
     @FXML
     private TilePane paneTerrain;
-
     @FXML
     private Pane paneRacine;
-
-
     @FXML
     private BorderPane Border1;
-
-
-    //@FXML
-    //private Pane PaneDeplacement;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.terrain = new Terrain();
         env = new Environnement();
-
-        //jou = new Joueur(350,160,env);
-        //enn = new enemieNv1(350,160,env)
 
         TerrainVue terrainVue = new TerrainVue(env.getTerrain(), paneTerrain);
 
@@ -84,19 +69,18 @@ public class Controleur implements Initializable {
 
         gameLoop.play();
 
-
         Border1.addEventFilter(KeyEvent.KEY_PRESSED, (key)->
         {
 
-            if(key.getCode() == KeyCode.RIGHT) {
+            if(key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.D) {
                 this.env.getPersonage().droite();
             }
 
-            if(key.getCode() == KeyCode.LEFT) {
+            if(key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.Q) {
                 this.env.getPersonage().gauche();
             }
 
-            if(key.getCode() == KeyCode.UP) {
+            if(key.getCode() == KeyCode.UP || key.getCode() == KeyCode.Z) {
                 this.env.getPersonage().haut();
 
             }
@@ -105,21 +89,22 @@ public class Controleur implements Initializable {
         Border1.addEventFilter(KeyEvent.KEY_RELEASED, (key)->
         {
 
-            if(key.getCode() == KeyCode.RIGHT) {
+            if(key.getCode() == KeyCode.RIGHT || key.getCode() == KeyCode.D ) {
                 this.env.getPersonage().neVaPLusADroite();
             }
 
-            if(key.getCode() == KeyCode.LEFT) {
+            if(key.getCode() == KeyCode.LEFT || key.getCode() == KeyCode.Q) {
                 this.env.getPersonage().neVaPLusAGauche();
             }
 
-            if(key.getCode() == KeyCode.UP) {
+            if(key.getCode() == KeyCode.UP || key.getCode() == KeyCode.Z) {
                 this.env.getPersonage().neVaPLusEnHaut();
             }
 
         });
 
-       /* paneRacine.setOnMouseEntered(new EventHandler() {
+
+        /*paneRacine.setOnMouseEntered(new EventHandler() {
             @Override
             public void handle(Event arg0) {
                 Image image = new Image("src/main/resources/com/example/zombiesurvivor/images/doitecourt.png");
@@ -130,29 +115,23 @@ public class Controleur implements Initializable {
         paneTerrain.setOnMouseClicked(mouseEvent -> {
             int indiceTuile = ((int) mouseEvent.getY()) / 32 * 30 +((int) mouseEvent.getX())/32;
             System.out.println(((int) mouseEvent.getY()) / 32 * 30 +((int) mouseEvent.getX())/32);
-              //  if(terrain.CodesTuiles(indiceTuile)!=1267) {
+            System.out.println(terrain.CodesTuiles(indiceTuile));
+
+                if(terrain.CodesTuiles(indiceTuile)!=1267) {
                     terrain.enleveTuile(indiceTuile);
-               // }
-              //  else{
-               //     terrain.ajouterTuile(indiceTuile);
-         //   }
+                    System.out.println(terrain.CodesTuiles(indiceTuile));
+
+                }
+           // terrainVue.afficherTerrain();
         });
 
-
-
-
     }
-
-
-
 
 
     public double verivSaut(double Yhere,double délaiSaut ) {
 
         return(délaiSaut*délaiSaut)-20*délaiSaut+Yhere;
-
     }
-
 
     void initAnimation() {
         this.gameLoop = new Timeline();
@@ -163,11 +142,7 @@ public class Controleur implements Initializable {
                 Duration.seconds(0.01),
                 (ev -> {
                     tic++;
-
                     this.env.getPersonage().agir();
-
-
-//
 //                    System.out.println(env.getPersonage().getVie());
 //                    env.getEnnemie().attaque(joueurVue);
 //                    env.getEnnemie().enleveVie(env.getPersonage());
