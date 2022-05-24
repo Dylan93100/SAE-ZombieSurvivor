@@ -5,6 +5,7 @@ import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -117,13 +118,13 @@ public class Controleur implements Initializable {
 
         });
 
-        paneRacine.setOnMouseEntered(new EventHandler() {
-            @Override
-            public void handle(Event arg0) {
-                Image cursor = new Image("images/doitecourt.png");
-                paneRacine.getScene().setCursor(new ImageCursor(cursor));
-            }
-        });
+//        paneRacine.setOnMouseEntered(new EventHandler() {
+//            @Override
+//            public void handle(Event arg0) {
+//                Image cursor = new Image("images/doitecourt.png");
+//                paneRacine.getScene().setCursor(new ImageCursor(cursor));
+//            }
+//        });
 
 
 
@@ -131,9 +132,18 @@ public class Controleur implements Initializable {
 
 
 
-    public double verivSaut(double Yhere,double délaiSaut ) {
+    @FXML
+    void craftBotte(ActionEvent event) {
+    }
 
-        return(délaiSaut*délaiSaut)-20*délaiSaut+Yhere;
+    @FXML
+    void craftEpee(ActionEvent event) {
+        System.out.println(env.getPersonage().getInventaire());
+    }
+
+    @FXML
+    void craftLance(ActionEvent event) {
+        env.getPersonage().craftLancepierre();
 
     }
 

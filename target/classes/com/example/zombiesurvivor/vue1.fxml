@@ -24,17 +24,26 @@
    <left>
       <VBox prefHeight="487.0" prefWidth="117.0" style="-fx-background-color: Black;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="86.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
-
-            </ImageView>
-            <Label prefHeight="17.0" prefWidth="59.0" text="bois 0/50" textFill="#fbf9f9" />
-            <Label prefHeight="39.0" prefWidth="61.0" text="pierre 0/60" textFill="#fbfafa" />
+            <ImageView fitHeight="77.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../src/main/resources/com/example/zombiesurvivor/images/Epee.png" />
+               </image></ImageView>
+            <Label prefHeight="17.0" prefWidth="85.0" text="bois 0/50" textFill="#fbf9f9" />
+            <Label prefHeight="39.0" prefWidth="82.0" text="pierre 0/60" textFill="#fbfafa" />
             <Button fx:id="crEppee" mnemonicParsing="false" onAction="#craftEpee" prefHeight="33.0" prefWidth="116.0" text="CraftEpee" />
-            <Label prefHeight="48.0" prefWidth="96.0" text="    image botte" textFill="#fbfafa" />
+            <ImageView fitHeight="72.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../src/main/resources/com/example/zombiesurvivor/images/bottes.png" />
+               </image>
+            </ImageView>
             <Label prefHeight="27.0" prefWidth="79.0" text="viande 0/5" textFill="#f4f4f4" />
             <Label prefHeight="27.0" prefWidth="61.0" text="bois 0/30" textFill="#f8f6f6" />
             <Button fx:id="crbotte" mnemonicParsing="false" onAction="#craftBotte" prefHeight="32.0" prefWidth="118.0" text="Craft botte" />
-            <Label prefHeight="52.0" prefWidth="107.0" text="image lance pierre" textFill="#fdf9f9" />
+            <ImageView fitHeight="73.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../src/main/resources/com/example/zombiesurvivor/images/Lance.png" />
+               </image>
+            </ImageView>
             <Label prefHeight="17.0" prefWidth="73.0" text="bois 0/40" textFill="#f6f5f5" />
             <Label prefHeight="17.0" prefWidth="64.0" text="pierre 0/30" textFill="#fbf9f9" />
             <Label text="viande 0/6" textFill="#f4f2f2" />
