@@ -18,11 +18,6 @@
         <Pane fx:id="paneRacine" prefHeight="511.0" prefWidth="596.0" BorderPane.alignment="CENTER">
             <children>
                 <TilePane fx:id="paneTerrain" prefColumns="30" prefHeight="640.0" prefRows="0" prefWidth="960.0" style="-fx-background-color: white;" />
-            <ImageView fitHeight="73.0" fitWidth="377.0" pickOnBounds="true" preserveRatio="true" translateX="249.0" translateY="450.0">
-               <image>
-                  <Image url="@../../../../../src/main/resources/com/example/zombiesurvivor/images/inventaire.png" />
-               </image>
-            </ImageView>
             </children>
         </Pane>
     </center>

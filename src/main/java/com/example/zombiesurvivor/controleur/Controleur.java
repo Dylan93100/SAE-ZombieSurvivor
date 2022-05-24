@@ -1,6 +1,7 @@
 package com.example.zombiesurvivor.controleur;
 
 import com.example.zombiesurvivor.modele.*;
+import com.example.zombiesurvivor.vue.InventaireVue;
 import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.animation.KeyFrame;
@@ -81,6 +82,8 @@ public class Controleur implements Initializable {
         TerrainVue terrainVue = new TerrainVue(env.getTerrain(), paneTerrain);
 
         JoueurVue joueurVue = new JoueurVue(paneRacine,env.getPersonage());
+
+        InventaireVue inventaireVue = new InventaireVue(paneRacine);
 
         initAnimation();
 

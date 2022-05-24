@@ -24,8 +24,8 @@ public class InventaireVue {
 
         HUDV = new ImageView(HUD);
 
-        HUDV.translateXProperty(940);
-        HUDV.translateYProperty();
+        HUDV.setTranslateX(250);
+        HUDV.setTranslateY(470);
         paneRacine.getChildren().add(HUDV);
     }
 }
