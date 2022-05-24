@@ -1,5 +1,7 @@
 package com.example.zombiesurvivor.modele;
 
+import com.example.zombiesurvivor.vue.InventaireVue;
+
 import java.util.ArrayList;
 
 public class Environnement {
@@ -10,6 +12,7 @@ public class Environnement {
     private Terrain terrain;
     private enemieNv1 ennemie;
     private Joueur personage;
+    private InventaireVue inventaireVue;
 
     public Environnement() {
         listperso = new ArrayList<>();

@@ -9,6 +9,8 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Camera;
+import javafx.scene.PerspectiveCamera;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -48,6 +50,7 @@ public class Controleur implements Initializable {
 
     private JoueurVue joueurVue;
 
+    private InventaireVue inventaireVue;
 
     @FXML
     private TilePane paneTerrain;
@@ -71,6 +74,13 @@ public class Controleur implements Initializable {
     private Label pierreBesoins;
 
     @FXML
+    private Label qantiteViande;
+
+    @FXML
+    private Label qantiteBois;
+
+
+    @FXML
     private BorderPane Border1;
 
 
@@ -89,7 +99,7 @@ public class Controleur implements Initializable {
 
         JoueurVue joueurVue = new JoueurVue(paneRacine,env.getPersonage());
 
-        InventaireVue inventaireVue = new InventaireVue(paneRacine);
+         inventaireVue = new InventaireVue(paneRacine);
 
         initAnimation();
 
@@ -144,24 +154,22 @@ public class Controleur implements Initializable {
 
     }
 
-//    @FXML
-//    void craftBotte(ActionEvent event) {
-//
-//        env.getPersonage().getViande().augmente();
-//
-//
-//    }
+    @FXML
+    void craftBotte(ActionEvent event) {
+        env.getPersonage().getViande().augmente();
+        env.getPersonage().craftBotte(inventaireVue);
+    }
 
     @FXML
     void craftEpee(ActionEvent event) {
         env.getPersonage().getBois().augmente();
-        System.out.println(env.getPersonage().getPierre().getQuantité());
+        env.getPersonage().craftEpee(inventaireVue);
     }
 
     @FXML
     void craftLancepierre(ActionEvent event) {
         env.getPersonage().getPierre().augmente();
-        env.getPersonage().craftLancepierre();
+        env.getPersonage().craftLancepierre(inventaireVue);
 
     }
 
@@ -176,7 +184,14 @@ public class Controleur implements Initializable {
                 (ev -> {
                     tic++;
 
+                    final Camera camera = new PerspectiveCamera(true);
+                    camera.setTranslateX(env.getPersonage().getX());
+                    camera.setTranslateY(env.getPersonage().getY());
+//                    scene.setCamera(camera);
+
                     this.qantitePierre.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
+                    this.qantiteBois.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
+                    this.qantiteViande.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
                     this.pierreBesoins.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
                     this.boisBesoins.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
                     this.viandeBesoins.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());

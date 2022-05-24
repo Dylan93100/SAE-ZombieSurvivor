@@ -17,10 +17,10 @@
     <center>
         <Pane fx:id="paneRacine" prefHeight="511.0" prefWidth="596.0" BorderPane.alignment="CENTER">
             <children>
-                <TilePane fx:id="paneTerrain" prefColumns="30" prefHeight="640.0" prefRows="0" prefWidth="960.0" style="-fx-background-color: white;">
-               <children>
-                  <Label fx:id="qantitePierre" text="Label" translateX="474.0" translateY="474.0" />
-               </children></TilePane>
+                <TilePane fx:id="paneTerrain" prefColumns="30" prefHeight="640.0" prefRows="0" prefWidth="960.0" style="-fx-background-color: white;" />
+            <Label fx:id="qantitePierre" text="Label" textFill="#5cd3c5" translateX="250.0" translateY="470.0" />
+            <Label fx:id="qantiteViande" layoutX="10.0" layoutY="10.0" text="Label" translateX="323.0" translateY="474.0" />
+            <Label fx:id="qantiteBois" layoutX="10.0" layoutY="10.0" text="Label" translateX="288.0" translateY="475.0" />
             </children>
         </Pane>
     </center>
@@ -31,7 +31,7 @@
                <image>
                   <Image url="@../../../../../src/main/resources/com/example/zombiesurvivor/images/Epee.png" />
                </image></ImageView>
-            <Label fx:id="boisBesoins" prefHeight="16.0" prefWidth="26.0" text="0" textFill="#fbf9f9" translateX="50.0" />
+            <Label fx:id="boisBesoins" prefHeight="16.0" prefWidth="33.0" text="0" textFill="#fbf9f9" translateX="50.0" />
             <Label prefHeight="39.0" prefWidth="104.0" text="pierre 0/60" textFill="#fbfafa" />
             <Button mnemonicParsing="false" onAction="#craftEpee" prefHeight="33.0" prefWidth="116.0" text="Craft" />
             <ImageView fitHeight="75.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
@@ -39,7 +39,7 @@
                   <Image url="@../../../../../src/main/resources/com/example/zombiesurvivor/images/bottes.png" />
                </image>
             </ImageView>
-            <Label fx:id="viandeBesoins" prefHeight="27.0" prefWidth="79.0" text="viande 0/5" textFill="#f4f4f4" />
+            <Label fx:id="viandeBesoins" prefHeight="27.0" prefWidth="15.0" text="0" textFill="#f4f4f4" />
             <Label prefHeight="27.0" prefWidth="61.0" text="bois 0/30" textFill="#f8f6f6" />
             <Button mnemonicParsing="false" onAction="#craftBotte" prefHeight="32.0" prefWidth="118.0" text="Craft botte" />
             <ImageView fitHeight="78.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
@@ -51,8 +51,6 @@
             <Label prefHeight="17.0" prefWidth="64.0" text="pierre 0/30" textFill="#fbf9f9" />
             <Label text="viande 0/6" textFill="#f4f2f2" />
             <Button mnemonicParsing="false" onAction="#craftLancepierre" prefHeight="25.0" prefWidth="115.0" text="Craft lance pirre" />
-            <Label text="Label" />
-            <Label text="Label" />
          </children>
       </VBox>
    </left>

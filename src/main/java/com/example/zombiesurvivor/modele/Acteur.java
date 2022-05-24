@@ -116,11 +116,11 @@ public abstract class  Acteur {
 
     public static void limitationMapX() {
         if(Acteur.xProperty().getValue()>935) {
-            Acteur.setxValue(3);
+            Acteur.setxValue(5);
             System.out.println("Vous avez atteint la limte de la map");
         }
         if(Acteur.xProperty().getValue()<-5) {
-            Acteur.setxValue(-3);
+            Acteur.setxValue(-5);
             System.out.println("Vous avez atteint la limte de la map");
         }
     }

@@ -1,5 +1,6 @@
 package com.example.zombiesurvivor.modele;
 
+import com.example.zombiesurvivor.vue.InventaireVue;
 import com.example.zombiesurvivor.vue.JoueurVue;
 
 public class Joueur extends Acteur {
@@ -143,7 +144,7 @@ public class Joueur extends Acteur {
 
     }
 
-    public void craftEpee () {
+    public void craftEpee (InventaireVue inventaireVue) {
 
         Epee p = new Epee();
 
@@ -151,19 +152,28 @@ public class Joueur extends Acteur {
             inventaire.getEquipInv().add(p);
             pierre.setQuantité(pierre.getQuantité()-40);
             bois.setQuantité(bois.getQuantité()-60);
+                inventaireVue.aquesitionDeLepee();
         }
     }
 
-//    public void craftBotte (){
-//        Botte b;
-//        if(inventaire.getCuire==10 ){
-//            inventaire.add(b);
-//        }
-//    }
-    public void craftLancepierre (){
+    public void craftBotte (InventaireVue inventaireVue){
+        Botte b = new Botte();
+        if(vache.getQuantité()>=10 && bois.getQuantité()>=40 ){
+            inventaire.getEquipInv().add(b);
+            bois.setQuantité(bois.getQuantité()-60);
+            vache.setQuantité(vache.getQuantité()-10);
+                inventaireVue.aquesitionDeBotte();
+                    setVitesse(getVitesse()+2);
+        }
+    }
+    public void craftLancepierre (InventaireVue inventaireVue){
         Lance l = new Lance();
         if(bois.getQuantité()>=60 && pierre.getQuantité()>=50 && vache.getQuantité()>=30 ){
             inventaire.getEquipInv().add(l);
+            bois.setQuantité(pierre.getQuantité()-60);
+            pierre.setQuantité(bois.getQuantité()-50);
+            vache.setQuantité(bois.getQuantité()-30);
+            inventaireVue.aquesitionDeLance();
         }
     }
 //    public void craftclee (){

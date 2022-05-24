@@ -1,7 +1,10 @@
 package com.example.zombiesurvivor;
 
+import com.example.zombiesurvivor.modele.Environnement;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Camera;
+import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -12,6 +15,8 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+    private Environnement env = new Environnement();
+
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -20,6 +25,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             root.requestFocus();
+
 
 
         } catch(Exception e) {
