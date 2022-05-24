@@ -9,7 +9,6 @@ public class Joueur extends Acteur {
     Bois bois;
     Viande vache;
     boolean ok;
-
      Epee p = new Epee();
      Botte b = new Botte();
      Lance l = new Lance();

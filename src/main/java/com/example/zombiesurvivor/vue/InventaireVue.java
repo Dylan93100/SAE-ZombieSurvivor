@@ -1,11 +1,12 @@
 package com.example.zombiesurvivor.vue;
 
 import com.example.zombiesurvivor.Main;
-import com.example.zombiesurvivor.modele.Joueur;
+import com.example.zombiesurvivor.modele.Environnement;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class InventaireVue {
 
@@ -21,7 +22,10 @@ public class InventaireVue {
     private static ImageView EpeeV;
     private static ImageView BotteV;
     private static ImageView LanceV;
-    private static Label labelbois;
+    private static Label labelpierre = new Label("0");
+    private static Label labelbois = new Label("0");
+    private static Label labelviande = new Label("0");
+
 
     public  InventaireVue(Pane paneRacine) {
         this.paneRacine = paneRacine;
@@ -50,6 +54,7 @@ public class InventaireVue {
         EpeeV = new ImageView(epee);
         BotteV = new ImageView(botte);
         LanceV =new ImageView(lance);
+
 
         HUDV.setTranslateX(250);
         HUDV.setTranslateY(470);
@@ -94,6 +99,21 @@ public class InventaireVue {
 
         LanceV.setVisible(false);
 
+        labelpierre.setTranslateX(273);
+        labelpierre.setTranslateY(489);
+        labelpierre.setTextFill(Color.WHITE);
+        paneRacine.getChildren().add(labelpierre);
+
+        labelbois.setTranslateX(311);
+        labelbois.setTranslateY(489);
+        labelbois.setTextFill(Color.WHITE);
+        paneRacine.getChildren().add(labelbois);
+
+        labelviande.setTranslateX(346);
+        labelviande.setTranslateY(489);
+        labelviande.setTextFill(Color.WHITE);
+        paneRacine.getChildren().add(labelviande);
+
     }
 
 public void aquesitionDeLepee(){
@@ -105,5 +125,10 @@ public void aquesitionDeLepee(){
     public void aquesitionDeLance(){
         LanceV.setVisible(true);
     }
+public void MAJ(Environnement env){
+    labelpierre.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
+    labelbois.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
+    labelviande.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
 
+}
 }

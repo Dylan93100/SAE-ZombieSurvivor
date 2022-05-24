@@ -10,8 +10,6 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Camera;
-import javafx.scene.PerspectiveCamera;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -27,6 +25,8 @@ import java.util.ResourceBundle;
 public class Controleur implements Initializable {
 
     private Terrain terrain;
+
+    private boolean voir = false;
 
     private Environnement env;
 
@@ -123,6 +123,12 @@ public class Controleur implements Initializable {
                 this.env.getPersonage().haut();
 
             }
+            if(key.getCode() == KeyCode.F1) {
+                voir = true;
+            }
+            if(key.getCode() == KeyCode.F2) {
+                voir = false;
+            }
         });
 
         Border1.addEventFilter(KeyEvent.KEY_RELEASED, (key)->
@@ -156,19 +162,19 @@ public class Controleur implements Initializable {
 
     @FXML
     void craftBotte(ActionEvent event) {
-        env.getPersonage().getViande().setQuantité(80);
+        env.getPersonage().getViande().augmente();
         env.getPersonage().craftBotte(inventaireVue);
     }
 
     @FXML
     void craftEpee(ActionEvent event) {
-        env.getPersonage().getBois().setQuantité(70);
+        env.getPersonage().getBois().augmente();
         env.getPersonage().craftEpee(inventaireVue);
     }
 
     @FXML
     void craftLancepierre(ActionEvent event) {
-        env.getPersonage().getPierre().setQuantité(100);
+        env.getPersonage().getPierre().augmente();
         env.getPersonage().craftLancepierre(inventaireVue);
 
     }
@@ -180,21 +186,15 @@ public class Controleur implements Initializable {
         this.gameLoop.setCycleCount(Timeline.INDEFINITE);
 
         KeyFrame kf = new KeyFrame(
-                Duration.seconds(0.01),
+                Duration.seconds(0.13),
                 (ev -> {
                     tic++;
 
-                     Camera camera = new PerspectiveCamera(true);
-                    camera.setTranslateX(env.getPersonage().getX());
-                    camera.setTranslateY(env.getPersonage().getY());
-                  //  scene.setCamera(camera);
+                    inventaireVue.MAJ(env);
 
                     this.qantitePierre.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
                     this.qantiteBois.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
                     this.qantiteViand.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
-                   // this.pierreBesoins.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
-                    //this.boisBesoins.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
-                    //this.viandeBesoins.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
                     this.env.getPersonage().agir();
 
 
