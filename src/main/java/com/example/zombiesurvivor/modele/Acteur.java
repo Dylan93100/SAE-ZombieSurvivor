@@ -35,7 +35,7 @@ public abstract class  Acteur {
     }
 
     public void verifGravite() {
-        if(!terrain.tuileSol(this.getX(), this.getY()+32)) {
+        if(!terrain.tuileSol(this.getXValue(), this.getYValue()+32)) {
             this.gravite = true;
         }
         else {
@@ -50,16 +50,20 @@ public abstract class  Acteur {
         return env;
     }
 
-    public int getX () {
-        return XProperty.get();
+    public int getXValue() {
+        return XProperty.getValue();
     }
 
-    public int getY () {
-        return YProperty.get();
+    public int getYValue() {
+        return YProperty.getValue();
     }
 
     public void setX(int newX)  {
         XProperty.setValue(newX);
+    }
+
+    public static void setxValue(int n ) {
+        xProperty().setValue(xProperty().getValue()-n);
     }
 
     public static IntegerProperty xProperty () {
@@ -90,9 +94,7 @@ public abstract class  Acteur {
         this.yProperty().setValue(this.yProperty().getValue()-n);
     }
 
-    public static void setxValue(int n ) {
-        xProperty().setValue(xProperty().getValue()-n);
-    }
+
 
     public int getVie() {
         return vie;

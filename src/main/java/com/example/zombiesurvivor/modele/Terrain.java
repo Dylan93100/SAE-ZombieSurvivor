@@ -51,7 +51,13 @@ public class Terrain {
         return this.tuile(x,y) == 1267;
     }
 
+    public void enleveTuile(int indiceTuile){
+        this.codesTuiles[indiceTuile]=1267;
+    }
 
+    public void ajouterTuile(int indiceTuile) {
+        this.codesTuiles[indiceTuile]=29112;
+    }
 
 //	public void getX() {
 //		return codesTuiles[i][j];

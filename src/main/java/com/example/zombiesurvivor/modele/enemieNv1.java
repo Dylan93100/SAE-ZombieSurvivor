@@ -15,7 +15,7 @@ public class enemieNv1 extends Acteur {
     public void seDeplpaceDroite() {
         if (Math.random() * 4 > 2) {
             int xDest = this.xProperty().getValue() + getVitesse();
-            if (this.terrain.tuileTraversable(getX() + 27, getY())) {
+            if (this.terrain.tuileTraversable(getXValue() + 27, getYValue())) {
                 this.setX(xDest);
             }
         }
@@ -25,7 +25,7 @@ public class enemieNv1 extends Acteur {
     public void seDeplpaceGacuhe() {
         if (Math.random() * 4 > 2) {
             int yDest = this.xProperty().getValue() - getVitesse();
-            if (this.terrain.tuileTraversable(getX() + 5, getY())) {
+            if (this.terrain.tuileTraversable(getXValue() + 5, getYValue())) {
                 this.setX(yDest);
             }
         }
@@ -46,7 +46,7 @@ public class enemieNv1 extends Acteur {
 
         for (int i = getEnv().getListperso().size()-1;i==0;i--){
         if(getEnv().getListperso().get(i) instanceof Joueur){
-            if((this.getX()-5<= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX()<=this.getX()+5))
+            if((this.getXValue()-5<= getEnv().getListperso().get(i).getXValue() && getEnv().getListperso().get(i).getXValue()<=this.getXValue()+5))
                 this.enleveVie(getEnv().getListperso().get(i));
             System.out.println(getEnv());
         }

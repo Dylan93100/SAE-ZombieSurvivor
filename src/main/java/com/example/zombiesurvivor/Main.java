@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             BorderPane root = FXMLLoader.load(Main.class.getResource("vue1.fxml"));
-            Scene scene = new Scene(root,960,640);
+            Scene scene = new Scene(root,1075,640);
             primaryStage.setScene(scene);
             primaryStage.show();
             root.requestFocus();

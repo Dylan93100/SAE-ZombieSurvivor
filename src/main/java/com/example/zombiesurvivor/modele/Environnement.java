@@ -59,7 +59,5 @@ public class Environnement {
     return ennemie;
     }
 
-//    public enemieNv1 getEnnemie() {
-//        return ennemie;
-//    }
+
 }

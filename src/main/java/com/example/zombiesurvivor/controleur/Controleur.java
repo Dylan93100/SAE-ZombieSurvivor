@@ -49,6 +49,8 @@ public class Controleur implements Initializable {
 
     private JoueurVue joueurVue;
 
+    private Acteur joueur ;
+
 
     @FXML
     private TilePane paneTerrain;
@@ -117,17 +119,31 @@ public class Controleur implements Initializable {
 
         });
 
-        paneRacine.setOnMouseEntered(new EventHandler() {
+       /* paneRacine.setOnMouseEntered(new EventHandler() {
             @Override
             public void handle(Event arg0) {
-                Image cursor = new Image("images/doitecourt.png");
-                paneRacine.getScene().setCursor(new ImageCursor(cursor));
+                Image image = new Image("src/main/resources/com/example/zombiesurvivor/images/doitecourt.png");
+                paneRacine.getScene().setCursor(new ImageCursor(image));
             }
+        });*/
+
+        paneTerrain.setOnMouseClicked(mouseEvent -> {
+            int indiceTuile = ((int) mouseEvent.getY()) / 32 * 30 +((int) mouseEvent.getX())/32;
+            System.out.println(((int) mouseEvent.getY()) / 32 * 30 +((int) mouseEvent.getX())/32);
+              //  if(terrain.CodesTuiles(indiceTuile)!=1267) {
+                    terrain.enleveTuile(indiceTuile);
+               // }
+              //  else{
+               //     terrain.ajouterTuile(indiceTuile);
+         //   }
         });
 
 
 
+
     }
+
+
 
 
 

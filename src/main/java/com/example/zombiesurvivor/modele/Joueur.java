@@ -2,8 +2,6 @@ package com.example.zombiesurvivor.modele;
 
 import com.example.zombiesurvivor.vue.JoueurVue;
 
-import java.util.ArrayList;
-
 public class Joueur extends Acteur {
     private Inventaire inventaire;
     Pierre pierre;
@@ -89,7 +87,7 @@ public class Joueur extends Acteur {
     public void seDeplpaceDroite () {
 
         int xDest = this.xProperty().getValue() + getVitesse();
-        if (this.terrain.tuileTraversable(xDest + 27, getY() + 20)) {
+        if (this.terrain.tuileTraversable(xDest + 27, getYValue() + 20)) {
             this.setX(xDest);
         }
     }
@@ -97,7 +95,7 @@ public class Joueur extends Acteur {
     public void seDeplpaceGacuhe () {
 
         int yDest = this.xProperty().getValue() - getVitesse();
-        if (this.terrain.tuileTraversable(getX() + 5, getY())) {
+        if (this.terrain.tuileTraversable(getXValue() + 5, getYValue())) {
             this.setX(yDest);
         }
         System.out.println(xProperty().getValue());
