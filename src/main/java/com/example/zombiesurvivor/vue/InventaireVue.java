@@ -6,10 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class InventaireVue {
-
 
 
     private static Pane paneRacine;
@@ -22,17 +22,22 @@ public class InventaireVue {
     private static ImageView EpeeV;
     private static ImageView BotteV;
     private static ImageView LanceV;
+    private VBox VboxRacine;
+    private Environnement env;
+    private Label nbbois = new Label("Bois");
     private static Label labelpierre = new Label("0");
     private static Label labelbois = new Label("0");
     private static Label labelviande = new Label("0");
 
 
-    public  InventaireVue(Pane paneRacine) {
+    public InventaireVue(Pane paneRacine, Environnement env, VBox VboxRacine) {
         this.paneRacine = paneRacine;
+        this.VboxRacine = VboxRacine;
         this.afficherInventaire();
+        this.env = env;
     }
 
-    private void afficherInventaire () {
+    private void afficherInventaire() {
 
         Image HUD = new Image(Main.class.getResource("images/inventaire.png").toString());
         Image bois = new Image(Main.class.getResource("images/bois.png").toString());
@@ -50,10 +55,10 @@ public class InventaireVue {
         PierreV = new ImageView(pierre);
         VacheV = new ImageView(vache);
         HacheV = new ImageView(hache);
-        PiocheV =new ImageView(pioche);
+        PiocheV = new ImageView(pioche);
         EpeeV = new ImageView(epee);
         BotteV = new ImageView(botte);
-        LanceV =new ImageView(lance);
+        LanceV = new ImageView(lance);
 
 
         HUDV.setTranslateX(250);
@@ -114,21 +119,28 @@ public class InventaireVue {
         labelviande.setTextFill(Color.WHITE);
         paneRacine.getChildren().add(labelviande);
 
+        nbbois.setTranslateX(0);
+        nbbois.setTranslateY(0);
+        nbbois.setTextFill(Color.WHITE);
+        VboxRacine.getChildren().add(nbbois);
     }
 
-public void aquesitionDeLepee(){
+    public void aquesitionDeLepee() {
         EpeeV.setVisible(true);
-}
-    public void aquesitionDeBotte(){
+    }
+
+    public void aquesitionDeBotte() {
         BotteV.setVisible(true);
     }
-    public void aquesitionDeLance(){
+
+    public void aquesitionDeLance() {
         LanceV.setVisible(true);
     }
-public void MAJ(Environnement env){
-    labelpierre.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
-    labelbois.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
-    labelviande.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
 
-}
+    public void MAJ(Environnement env) {
+        labelpierre.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
+        labelbois.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
+        labelviande.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
+
+    }
 }

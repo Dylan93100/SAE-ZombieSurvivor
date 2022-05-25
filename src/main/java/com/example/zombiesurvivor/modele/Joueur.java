@@ -8,11 +8,11 @@ public class Joueur extends Acteur {
     Pierre pierre;
     Bois bois;
     Viande vache;
-    boolean ok;
-     Epee p = new Epee();
-     Botte b = new Botte();
-     Lance l = new Lance();
-
+    Epee p = new Epee();
+    Botte b = new Botte();
+    Lance l = new Lance();
+    int change = getVitesse();
+    private Boolean juste = false;
     private int tic = 0;
     private boolean animation = false;
     private boolean up = false, down = false, left = false, right = false;
@@ -26,7 +26,7 @@ public class Joueur extends Acteur {
         super(5, 2, 5, 3, x, y, env);
         inventaire = new Inventaire();
         pierre = new Pierre();
-        vache = new Viande();
+        vache = new Viande(0,0,null);
         bois = new Bois();
         System.out.println(inventaire);
     }
@@ -145,47 +145,44 @@ public class Joueur extends Acteur {
     }
 
 
-    public void attasueOutil () {
-
-    }
-
     public void craftEpee (InventaireVue inventaireVue) {
 
         System.out.println(inventaire.toString());
-       if(!inventaire.getEquipInv().contains(p)){
-        if (pierre.getQuantité() >= 40 && bois.getQuantité() >= 60 ) {
-            inventaire.getEquipInv().add(p);
-            pierre.setQuantité(pierre.getQuantité()-40);
-            bois.setQuantité(bois.getQuantité()-60);
+        if (!inventaire.getEquipInv().contains(p)) {
+            if (pierre.getQuantité() >= 40 && bois.getQuantité() >= 60) {
+                inventaire.getEquipInv().add(p);
+                pierre.setQuantité(pierre.getQuantité() - 40);
+                bois.setQuantité(bois.getQuantité() - 60);
                 inventaireVue.aquesitionDeLepee();
-            System.out.println(inventaire.toString());
             }
         }
     }
+
     public void craftBotte (InventaireVue inventaireVue) {
 
-                if (!inventaire.getEquipInv().contains(b)) {
-                if (vache.getQuantité() >= 10 && bois.getQuantité() >= 40) {
-                    inventaire.getEquipInv().add(b);
-                    bois.setQuantité(bois.getQuantité() - 40);
-                    vache.setQuantité(vache.getQuantité() - 10);
-                    inventaireVue.aquesitionDeBotte();
-                    setVitesse(getVitesse() + 2);
-                }
+        if (!inventaire.getEquipInv().contains(b)) {
+            if (vache.getQuantité() >= 10 && bois.getQuantité() >= 40) {
+                inventaire.getEquipInv().add(b);
+                bois.setQuantité(bois.getQuantité() - 40);
+                vache.setQuantité(vache.getQuantité() - 10);
+                inventaireVue.aquesitionDeBotte();
+                setVitesse(getVitesse()+2);
+
+            }
         }
     }
 
-    public void craftLancepierre (InventaireVue inventaireVue){
+    public void craftLancepierre (InventaireVue inventaireVue) {
 
-                    if(!inventaire.getEquipInv().contains(l)){
-                    if (bois.getQuantité() >= 30 && pierre.getQuantité() >= 50 && vache.getQuantité() >= 30) {
-                        inventaire.getEquipInv().add(l);
-                        bois.setQuantité(bois.getQuantité() - 30);
-                        pierre.setQuantité(pierre.getQuantité() - 50);
-                        vache.setQuantité(vache.getQuantité() - 30);
-                        inventaireVue.aquesitionDeLance();
-                    }
-                }
+        if (!inventaire.getEquipInv().contains(l)) {
+            if (bois.getQuantité() >= 30 && pierre.getQuantité() >= 50 && vache.getQuantité() >= 30) {
+                inventaire.getEquipInv().add(l);
+                bois.setQuantité(bois.getQuantité() - 30);
+                pierre.setQuantité(pierre.getQuantité() - 50);
+                vache.setQuantité(vache.getQuantité() - 30);
+                inventaireVue.aquesitionDeLance();
+            }
+        }
     }
 //    public void craftclee (){
 //        Clee c;
@@ -208,6 +205,10 @@ public class Joueur extends Acteur {
 
     public Inventaire getInventaire () {
         return inventaire;
+    }
+
+    public Boolean getJuste () {
+        return juste;
     }
 }
 //

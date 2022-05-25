@@ -54,6 +54,9 @@ public abstract class  Acteur {
         return XProperty.get();
     }
 
+    public IntegerProperty Xproperty () {
+        return XProperty;
+    }
     public int getY () {
         return YProperty.get();
     }

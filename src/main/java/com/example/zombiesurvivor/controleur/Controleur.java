@@ -2,8 +2,10 @@ package com.example.zombiesurvivor.controleur;
 
 import com.example.zombiesurvivor.modele.Environnement;
 import com.example.zombiesurvivor.modele.Terrain;
+import com.example.zombiesurvivor.modele.Viande;
 import com.example.zombiesurvivor.vue.InventaireVue;
 import com.example.zombiesurvivor.vue.JoueurVue;
+import com.example.zombiesurvivor.vue.PnjVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -26,21 +29,13 @@ public class Controleur implements Initializable {
 
     private Terrain terrain;
 
-    private boolean voir = false;
-
     private Environnement env;
-
-    //private Acteur jou;
-
-    //private Acteur enn;
 
     private int delay=0;
 
     private int delaysaut =5;
 
     private Timeline gameLoop;
-
-
 
     private boolean animation = false ;
 
@@ -54,6 +49,9 @@ public class Controleur implements Initializable {
 
     @FXML
     private TilePane paneTerrain;
+
+    @FXML
+    private VBox VboxRacine;
 
     @FXML
     private Pane paneRacine;
@@ -84,9 +82,6 @@ public class Controleur implements Initializable {
     private BorderPane Border1;
 
 
-    //@FXML
-    //private Pane PaneDeplacement;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.terrain = new Terrain();
@@ -99,7 +94,9 @@ public class Controleur implements Initializable {
 
         JoueurVue joueurVue = new JoueurVue(paneRacine,env.getPersonage());
 
-         inventaireVue = new InventaireVue(paneRacine);
+         inventaireVue = new InventaireVue(paneRacine,env,VboxRacine);
+
+        PnjVue pnjvue = new PnjVue(paneRacine,env.getVache());
 
         initAnimation();
 
@@ -122,12 +119,6 @@ public class Controleur implements Initializable {
             if(key.getCode() == KeyCode.Z) {
                 this.env.getPersonage().haut();
 
-            }
-            if(key.getCode() == KeyCode.F1) {
-                voir = true;
-            }
-            if(key.getCode() == KeyCode.F2) {
-                voir = false;
             }
         });
 
@@ -186,15 +177,14 @@ public class Controleur implements Initializable {
         this.gameLoop.setCycleCount(Timeline.INDEFINITE);
 
         KeyFrame kf = new KeyFrame(
-                Duration.seconds(0.13),
+                Duration.seconds(0.013),
                 (ev -> {
                     tic++;
 
                     inventaireVue.MAJ(env);
-
-                    this.qantitePierre.textProperty().bind(env.getPersonage().getPierre().quantitéProperty().asString());
-                    this.qantiteBois.textProperty().bind(env.getPersonage().getBois().quantitéProperty().asString());
-                    this.qantiteViand.textProperty().bind(env.getPersonage().getViande().quantitéProperty().asString());
+                    System.out.println(env.getVache().getXProperty());
+                    this.env.getVache().seDeplpaceDroite();
+                    this.env.getVache().seDeplpaceGacuhe();
                     this.env.getPersonage().agir();
 
 

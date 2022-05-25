@@ -34,10 +34,10 @@ public class Ressource extends Item {
 		this.quantité.set(quantité);
 	}
 
-	@Override
-	public String toString() {
-		return "Ressource [Joueur a    +" + toString() +"]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Ressource [Joueur a    +" + toString() +"]";
+//	}
 	
 	
 }
