@@ -2,7 +2,6 @@ package com.example.zombiesurvivor.controleur;
 
 import com.example.zombiesurvivor.modele.Environnement;
 import com.example.zombiesurvivor.modele.Terrain;
-import com.example.zombiesurvivor.modele.Viande;
 import com.example.zombiesurvivor.vue.InventaireVue;
 import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.PnjVue;
@@ -92,11 +91,11 @@ public class Controleur implements Initializable {
 
         TerrainVue terrainVue = new TerrainVue(env.getTerrain(), paneTerrain);
 
-        JoueurVue joueurVue = new JoueurVue(paneRacine,env.getPersonage());
+        joueurVue = new JoueurVue(paneRacine,env.getPersonage());
 
          inventaireVue = new InventaireVue(paneRacine,env,VboxRacine);
 
-        PnjVue pnjvue = new PnjVue(paneRacine,env.getVache());
+        PnjVue pnjvue = new PnjVue(paneRacine,env.getVache(),env.getEnnemie());
 
         initAnimation();
 
@@ -182,11 +181,10 @@ public class Controleur implements Initializable {
                     tic++;
 
                     inventaireVue.MAJ(env);
-                    System.out.println(env.getVache().getXProperty());
-                    this.env.getVache().seDeplpaceDroite();
-                    this.env.getVache().seDeplpaceGacuhe();
+                    System.out.println(env.getPersonage().getVie());
+                    this.env.getVache().agir();
                     this.env.getPersonage().agir();
-
+                    this.env.getEnnemie().attaque(joueurVue);
 
 //
 //                    System.out.println(env.getPersonage().getVie());

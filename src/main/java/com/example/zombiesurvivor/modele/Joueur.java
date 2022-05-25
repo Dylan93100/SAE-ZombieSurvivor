@@ -108,11 +108,11 @@ public class Joueur extends Acteur {
     }
 
 
-    @Override
-    public void seDeplpaceHaut () {
+    //@Override
+   // public void seDeplpaceHaut () {
 
-        this.yProperty().setValue(this.yProperty().getValue() - getSaut() * 2);
-    }
+        //this.yProperty().setValue(this.yProperty().getValue() - getSaut() * 2);
+   // }
 
     public void droite () {
         this.right = true;

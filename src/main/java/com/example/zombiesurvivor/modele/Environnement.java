@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Environnement {
 
 
-    private ArrayList<Acteur> listperso;
+    private ArrayList<enemieNv1> listperso;
     private ArrayList<Ressource> listeVache;
     private Viande vache;
     private Terrain terrain;
@@ -16,23 +16,15 @@ public class Environnement {
     private InventaireVue inventaireVue;
 
     public Environnement() {
-        listperso = new ArrayList<>();
-
+        listperso = new ArrayList<enemieNv1>();
         listeVache = new ArrayList<>();
         this.terrain = new Terrain();
         this.personage = new Joueur(350,100,this);
-        this.ennemie = new enemieNv1(350,100,this);
+        this.ennemie = new enemieNv1(350,322,this);
         this.vache = new Viande(366,322,this);
-        this.ajouterjoueur();
-        this.ajouterEnnemie();
         this.ajouterEnnemie();
         this.ajouterVache();
         System.out.println(terrain);
-    }
-
-    public void ajouterjoueur() {
-
-        listperso.add(personage);
     }
 
     public void ajouterVache() {
@@ -42,14 +34,14 @@ public class Environnement {
 
     public void ajouterEnnemie() {
 
-//        listperso.add(ennemie);
+        listperso.add(ennemie);
     }
 
     public Viande getVache() {
         return vache;
     }
 
-    public ArrayList<Acteur> getListperso() {
+    public ArrayList<enemieNv1> getListperso() {
         return listperso;
     }
 

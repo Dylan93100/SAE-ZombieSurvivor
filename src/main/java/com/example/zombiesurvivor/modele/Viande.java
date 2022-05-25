@@ -37,7 +37,7 @@ public class Viande extends Ressource {
 		return XProperty.get();
 	}
 
-	public void setyValue ( int n ){
+	public void setyValue(int n) {
 		this.YPropertyProperty().setValue(this.YPropertyProperty().getValue() - n);
 	}
 
@@ -66,36 +66,30 @@ public class Viande extends Ressource {
 	}
 
 
-	public void seDeplpaceDroite() {
+	public void agir() {
 		isGravite();
 		if (Math.random() * 4 > 2) {
 			int xDest = this.XPropertyProperty().getValue() + 2;
 			if (this.env.getTerrain().tuileTraversable(getXProperty() + 27, getYProperty())) {
 				this.setX(xDest);
-				if (isGravite()) {
-					setyValue(-3);
-					verifGravite();
 				}
 			}
-		}
-	}
-
-	public void seDeplpaceGacuhe() {
 		isGravite();
 		if (Math.random() * 5 > 2) {
 			int yDest = this.XPropertyProperty().getValue() - 2;
 			if (this.env.getTerrain().tuileTraversable(getXProperty() + 5, getYProperty())) {
 				this.setX(yDest);
-				if (isGravite()) {
-					setyValue(-3);
-					verifGravite();
-				}
 			}
 		}
+		if (isGravite()) {
+			setyValue(-3);
+			verifGravite();
+		}
 	}
-
 }
-			//	@Override
+
+
+//	@Override
 //	public String toString() {
 //		return "Viande [" + super.getQuantité() ;
 //	}

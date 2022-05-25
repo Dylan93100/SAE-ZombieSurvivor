@@ -54,9 +54,6 @@ public abstract class  Acteur {
         return XProperty.get();
     }
 
-    public IntegerProperty Xproperty () {
-        return XProperty;
-    }
     public int getY () {
         return YProperty.get();
     }
@@ -65,7 +62,7 @@ public abstract class  Acteur {
         XProperty.setValue(newX);
     }
 
-    public static IntegerProperty xProperty () {
+    public IntegerProperty xProperty() {
         return XProperty;
     }
 
@@ -85,20 +82,24 @@ public abstract class  Acteur {
         return saut;
     }
 
-    public void setSaut(int saut) {
-        this.saut = saut;
-    }
-
     public void setyValue(int n ) {
         this.yProperty().setValue(this.yProperty().getValue()-n);
     }
 
-    public static void setxValue(int n ) {
-        xProperty().setValue(xProperty().getValue()-n);
+    public void setxValue(int n) {
+        this.xProperty().setValue(this.xProperty().getValue()-n);
     }
 
     public int getVie() {
         return vie;
+    }
+
+    public void setVie(int vie) {
+        this.vie = vie;
+    }
+
+    public void changeVie(int degat) {
+        setVie(getVie()-degat);
     }
 
     public int getAttaque() {
@@ -117,13 +118,13 @@ public abstract class  Acteur {
         return this.vie>0;
     }
 
-    public static void limitationMapX() {
-        if(Acteur.xProperty().getValue()>935) {
-            Acteur.setxValue(5);
+    public void limitationMapX() {
+        if(this.xProperty().getValue()>935) {
+            this.setxValue(5);
             System.out.println("Vous avez atteint la limte de la map");
         }
-        if(Acteur.xProperty().getValue()<-5) {
-            Acteur.setxValue(-5);
+        if(this.xProperty().getValue()<-5) {
+            this.setxValue(-5);
             System.out.println("Vous avez atteint la limte de la map");
         }
     }
@@ -131,8 +132,6 @@ public abstract class  Acteur {
     public abstract void seDeplpaceDroite();
 
     public abstract void seDeplpaceGacuhe ();
-
-    public abstract void seDeplpaceHaut ();
 
     public abstract void agir();
 
