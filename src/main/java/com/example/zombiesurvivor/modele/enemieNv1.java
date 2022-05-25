@@ -54,49 +54,44 @@ private Environnement env;
         this.xProperty.set(xProperty);
     }
 
-    public void seDeplpaceDroite() {
+    public void agir(JoueurVue jou) {
         if (Math.random() * 4 > 2) {
             int xDest = this.xProperty().getValue() + getVitesse();
             if (this.env.getTerrain().tuileTraversable(getX() + 27, getY())) {
                 this.setX(xDest);
+                    attaqueDroit(jou);
             }
         }
-    }
-
-
-
-    public void seDeplpaceGacuhe() {
         if (Math.random() * 4 > 2) {
             int yDest = this.xProperty().getValue() - getVitesse();
             if (this.env.getTerrain().tuileTraversable(getX() + 5, getY())) {
                 this.setX(yDest);
+                    attaqueGauche(jou);
             }
         }
     }
-
-
-    //public void agir () {
-
-  //  }
-
 
     public void enleveVie(Joueur personage) {
         personage.changeVie(attaque);
     }
-    public void attaque(JoueurVue jou){
+    public void attaqueDroit(JoueurVue jou){
 
-
-        //for (int i = 0;i==env.getListperso().size();i++){
-            if((getEnv().getPersonage().getX()+5<= getEnv().getEnnemie().getX() && getEnv().getPersonage().getY()-50<= getEnv().getEnnemie().getX())){
+            if(this.getY()-5<= env.getPersonage().getY() && env.getPersonage().getY()<=this.getY()+5 &&this.getX()-37<= env.getPersonage().getX() && env.getPersonage().getX()<=this.getX()+5) {
                 enleveVie(getEnv().getPersonage());
-            System.out.println(getEnv());
         }
         if(getEnv().getPersonage().estMort()) {
-            jou.imageMort();
+           // jou.imageMort();
         }
             }
-        //}
+    public void attaqueGauche(JoueurVue jou) {
 
+        if (this.getY() - 5 <= env.getPersonage().getY() && env.getPersonage().getY() <= this.getY() + 5 && this.getX() - 5 <= env.getPersonage().getX() && env.getPersonage().getX() <= this.getX() + 37) {
+            enleveVie(getEnv().getPersonage());
+        }
+        if (getEnv().getPersonage().estMort()) {
+            // jou.imageMort();
+        }
+    }
 
     public void BFS(){
 

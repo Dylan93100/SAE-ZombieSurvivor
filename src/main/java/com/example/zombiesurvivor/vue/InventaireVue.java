@@ -119,10 +119,10 @@ public class InventaireVue {
         labelviande.setTextFill(Color.WHITE);
         paneRacine.getChildren().add(labelviande);
 
-        nbbois.setTranslateX(0);
-        nbbois.setTranslateY(0);
-        nbbois.setTextFill(Color.WHITE);
-        VboxRacine.getChildren().add(nbbois);
+       // nbbois.setTranslateX(0);
+       // nbbois.setTranslateY(0);
+       // nbbois.setTextFill(Color.WHITE);
+       // VboxRacine.getChildren().add(nbbois);
     }
 
     public void aquesitionDeLepee() {

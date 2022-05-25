@@ -125,9 +125,9 @@ public class Joueur extends Acteur {
     }
 
     public void haut () {
+
         if (!isGravite())
             this.up = true;
-
     }
 
     public void neVaPLusADroite () {

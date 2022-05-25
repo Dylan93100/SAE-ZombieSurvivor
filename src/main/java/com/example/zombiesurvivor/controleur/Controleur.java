@@ -184,7 +184,7 @@ public class Controleur implements Initializable {
                     System.out.println(env.getPersonage().getVie());
                     this.env.getVache().agir();
                     this.env.getPersonage().agir();
-                    this.env.getEnnemie().attaque(joueurVue);
+                    this.env.getEnnemie().agir(joueurVue);
 
 //
 //                    System.out.println(env.getPersonage().getVie());
