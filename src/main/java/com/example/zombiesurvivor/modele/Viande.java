@@ -82,7 +82,7 @@ public class Viande extends Ressource {
 
 	public void seDeplpaceGacuhe() {
 		isGravite();
-		if (Math.random() * 4 > 2) {
+		if (Math.random() * 5 > 2) {
 			int yDest = this.XPropertyProperty().getValue() - 2;
 			if (this.env.getTerrain().tuileTraversable(getXProperty() + 5, getYProperty())) {
 				this.setX(yDest);
