@@ -98,13 +98,11 @@ public class Joueur extends Acteur {
         if (this.terrain.tuileTraversable(getXValue() + 5, getYValue())) {
             this.setX(yDest);
         }
-        System.out.println(xProperty().getValue());
     }
 
 
     @Override
     public void seDeplpaceHaut () {
-
         this.yProperty().setValue(this.yProperty().getValue() - getSaut() * 2);
     }
 
@@ -121,7 +119,6 @@ public class Joueur extends Acteur {
     public void haut () {
         if (!isGravite())
             this.up = true;
-
     }
 
     public void neVaPLusADroite () {

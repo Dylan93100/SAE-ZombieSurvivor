@@ -1,7 +1,7 @@
 package com.example.zombiesurvivor.modele;
 
 public class Vache extends Acteur {
-
+	private  int tic = 0 ;
 	public Vache (int x ,int y,Environnement env) {
 		super(5,3,0,0,x,y,env);
 
@@ -36,6 +36,8 @@ public class Vache extends Acteur {
 
 	@Override
 	public void agir() {
-
 	}
+
+
+
 }

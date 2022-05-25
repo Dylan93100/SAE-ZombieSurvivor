@@ -1,6 +1,7 @@
 package com.example.zombiesurvivor.controleur;
 
 import com.example.zombiesurvivor.modele.*;
+import com.example.zombiesurvivor.vue.EnemieVue;
 import com.example.zombiesurvivor.vue.JoueurVue;
 import com.example.zombiesurvivor.vue.TerrainVue;
 import javafx.animation.KeyFrame;
@@ -63,6 +64,8 @@ public class Controleur implements Initializable {
 
         JoueurVue joueurVue = new JoueurVue(paneRacine,env.getPersonage());
 
+        EnemieVue enemieNv1Vue = new EnemieVue(paneRacine,env);
+
         initAnimation();
 
         // demarre l'animation
@@ -122,6 +125,9 @@ public class Controleur implements Initializable {
                     System.out.println(terrain.CodesTuiles(indiceTuile));
 
                 }
+                else{
+                    terrain.ajouterTuile(indiceTuile);
+                }
            // terrainVue.afficherTerrain();
         });
 
@@ -143,6 +149,7 @@ public class Controleur implements Initializable {
                 (ev -> {
                     tic++;
                     this.env.getPersonage().agir();
+//                    this.env.getEnnemie().seDeplpaceGacuhe();
 //                    System.out.println(env.getPersonage().getVie());
 //                    env.getEnnemie().attaque(joueurVue);
 //                    env.getEnnemie().enleveVie(env.getPersonage());

@@ -4,7 +4,8 @@ import javafx.beans.property.IntegerProperty;
 
 public class Terrain {
 
-    //public IntegerProperty[] getCodesTuiles;
+    //public IntegerProperty[] getCodesTuiles{
+
 
      private int [] codesTuiles;
 

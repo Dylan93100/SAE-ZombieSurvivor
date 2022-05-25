@@ -5,48 +5,33 @@ import java.util.ArrayList;
 public class Environnement {
 
 
-    private ArrayList<Acteur> listperso;
-    private ArrayList<Terrain> listTerrain ;
+    private ArrayList<Acteur> acteurs;
     private Terrain terrain;
-    private enemieNv1 ennemie;
+    private EnemieNv1 ennemie;
     private Joueur personage;
 
     public Environnement() {
-        listperso = new ArrayList<>();
-        listTerrain = new ArrayList<>();
+        acteurs = new ArrayList<>();
         this.terrain = new Terrain();
         this.personage = new Joueur(350,100,this);
-        this.ennemie = new enemieNv1(350,100,this);
+        this.ennemie = new EnemieNv1(350,100,this);
         this.ajouterjoueur();
-        this.ajouterterrain();
         this.ajouterEnnemie();
-        this.ajouterEnnemie();
-        System.out.println(terrain);
     }
 
     public void ajouterjoueur() {
-
-        listperso.add(personage);
+        acteurs.add(personage);
     }
-
+    
     public void ajouterEnnemie() {
-
-//        listperso.add(ennemie);
+       acteurs.add(ennemie);
     }
 
-    public void ajouterterrain() {
-        listTerrain.add(terrain);
-    }
 
-    public ArrayList<Acteur> getListperso() {
-        return listperso;
+    public ArrayList<Acteur> getActeurs() {
+        return acteurs;
     }
-
-    @Override
-    public String toString() {
-        return "Environnement [listePerso=" + listperso + "listTerrain"+ listTerrain +"]";
-    }
-
+    
     public Joueur getPersonage() {
         return personage;
     }
@@ -55,9 +40,13 @@ public class Environnement {
         return terrain;
     }
 
-    public enemieNv1 getEnnemie () {
+    public EnemieNv1 getEnnemie () {
     return ennemie;
     }
 
+    @Override
+    public String toString() {
+        return "Environnement [listePerso=" + acteurs + "listTerrain"+"]";
+    }
 
 }
