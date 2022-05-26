@@ -1,6 +1,7 @@
 package com.example.zombiesurvivor.modele;
 
 import com.example.zombiesurvivor.vue.InventaireVue;
+import com.example.zombiesurvivor.vue.JoueurVue;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ public class Environnement {
 
 
     private ArrayList<enemieNv1> listperso;
-    private ArrayList<Ressource> listeVache;
+    private ArrayList<Viande> listeVache;
     private Viande vache;
     private Terrain terrain;
     private enemieNv1 ennemie;
@@ -17,7 +18,7 @@ public class Environnement {
 
     public Environnement() {
         listperso = new ArrayList<enemieNv1>();
-        listeVache = new ArrayList<>();
+        listeVache = new ArrayList<Viande>();
         this.terrain = new Terrain();
         this.personage = new Joueur(350,100,this);
         this.ennemie = new enemieNv1(350,300,this);
@@ -27,6 +28,19 @@ public class Environnement {
         System.out.println(terrain);
     }
 
+    public void ennemieDeLaListeAgit(JoueurVue jou){
+
+        for (int i = 0;i<listperso.size();++i){
+            listperso.get(i).agir(jou);
+        }
+    }
+
+    public void vacheDeLaListeAgit(){
+
+        for (int i = 0;i<listeVache.size();++i){
+            listeVache.get(i).agir();
+        }
+    }
     public void ajouterVache() {
 
         listeVache.add(vache);

@@ -190,9 +190,9 @@ public class Controleur implements Initializable {
                     inventaireVue.MAJ(env);
 
                     // System.out.println(env.getPersonage().getVie());
-                      //  this.env.getVache().agir();
-                       // this.env.getPersonage().agir();
-                     //   this.env.getEnnemie().agir(joueurVue);
+                        this.env.vacheDeLaListeAgit();
+                        this.env.getPersonage().agir();
+                        this.env.ennemieDeLaListeAgit(joueurVue);
 
 //                    System.out.println(env.getPersonage().getVie());
 //                    env.getEnnemie().attaque(joueurVue);
