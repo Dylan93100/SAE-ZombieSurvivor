@@ -95,7 +95,7 @@ public class Controleur implements Initializable {
 
          inventaireVue = new InventaireVue(paneRacine,env,VboxRacine);
 
-        PnjVue pnjvue = new PnjVue(paneRacine,env.getVache(),env.getEnnemie());
+        PnjVue pnjvue = new PnjVue(paneRacine,env.getVache(),env);
 
         initAnimation();
 
@@ -126,6 +126,10 @@ public class Controleur implements Initializable {
                 this.env.getPersonage().lanceDanSaMain();
 
             }
+            if(key.getCode() == KeyCode.CONTROL) {
+                this.env.getPersonage().attaqueOui();
+
+            }
         });
 
         Border1.addEventFilter(KeyEvent.KEY_RELEASED, (key)->
@@ -142,6 +146,9 @@ public class Controleur implements Initializable {
             if(key.getCode() == KeyCode.Z) {
                 this.env.getPersonage().neVaPLusEnHaut();
             }
+            if(key.getCode() == KeyCode.CONTROL) {
+            this.env.getPersonage().attaquePas();
+        }
 
         });
 
@@ -189,16 +196,13 @@ public class Controleur implements Initializable {
 
                     inventaireVue.MAJ(env);
 
-                    // System.out.println(env.getPersonage().getVie());
-                        this.env.vacheDeLaListeAgit();
+                   // for (int i = 0;i<env.getListperso().size();i++) {
+                     //   System.out.println(env.getListperso().get(i).getVie());
+                    //}
+                    this.env.vacheDeLaListeAgit();
                         this.env.getPersonage().agir();
                         this.env.ennemieDeLaListeAgit(joueurVue);
 
-//                    System.out.println(env.getPersonage().getVie());
-//                    env.getEnnemie().attaque(joueurVue);
-//                    env.getEnnemie().enleveVie(env.getPersonage());
-//                    System.out.println(env.getPersonage().getVie());
-//                    System.out.println(env.getPersonage().getEnv());
                     temps++;
                 })
         );

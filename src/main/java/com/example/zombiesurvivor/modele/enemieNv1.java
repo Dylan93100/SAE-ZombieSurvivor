@@ -5,7 +5,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 public class enemieNv1  {
-private int vie;
+    int vie;
     private int vitesse;
     private int attaque;
     private int saut;
@@ -67,6 +67,10 @@ private Environnement env;
         return yProperty;
     }
 
+    public int getVie () {
+        return vie;
+    }
+
     public int getVitesse() {
         return vitesse;
     }
@@ -79,7 +83,6 @@ private Environnement env;
     public void agir(JoueurVue jou) {
 
         verifGravite();
-        System.out.println(getY());
         isGravite();
         avancerDroite(jou);
         avancerGauche(jou);
@@ -133,6 +136,11 @@ private Environnement env;
         if (getEnv().getPersonage().estMort()) {
             // jou.imageMort();
         }
+    }
+
+    public boolean estMort(){
+
+        return vie<=0 ;
     }
 
     public void BFS(){

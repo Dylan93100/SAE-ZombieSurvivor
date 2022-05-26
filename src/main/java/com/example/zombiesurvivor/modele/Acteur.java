@@ -106,7 +106,7 @@ public abstract class  Acteur {
         return attaque;
     }
 
-    public void enleveVie(Acteur m) {
+    public void enleveVie(enemieNv1 m) {
         m.vie-=this.attaque;
     }
 

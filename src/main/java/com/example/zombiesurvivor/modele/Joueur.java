@@ -13,7 +13,7 @@ public class Joueur extends Acteur {
     Lance l = new Lance();
     private boolean aLeppe;
     private boolean aLance;
-
+    private boolean ouiOuNon;
     private boolean epeeActve;
 
     private boolean lanceActve;
@@ -74,11 +74,13 @@ public class Joueur extends Acteur {
                 verifGravite();
             }
         }
-//                }
         else {
             Yhere = yProperty().getValue();
             délaiSaut = .0;
+        }
 
+         if(ouiOuNon == true){
+           attaque();
         }
 
         if (isGravite()) {
@@ -104,6 +106,10 @@ public class Joueur extends Acteur {
         }
     }
 
+    public boolean isUp () {
+        return up;
+    }
+
     public void seDeplpaceGacuhe () {
 
         int yDest = this.xProperty().getValue() - getVitesse();
@@ -112,13 +118,6 @@ public class Joueur extends Acteur {
         }
         System.out.println(xProperty().getValue());
     }
-
-
-    //@Override
-   // public void seDeplpaceHaut () {
-
-        //this.yProperty().setValue(this.yProperty().getValue() - getSaut() * 2);
-   // }
 
     public void droite () {
         this.right = true;
@@ -136,6 +135,11 @@ public class Joueur extends Acteur {
             this.up = true;
     }
 
+    public void attaqueOui () {
+        this.ouiOuNon = true;
+
+    }
+
     public void neVaPLusADroite () {
         this.right = false;
 
@@ -148,6 +152,10 @@ public class Joueur extends Acteur {
     public void neVaPLusEnHaut () {
 
         this.up = false;
+    }
+    public void attaquePas () {
+
+        this.ouiOuNon = false;
     }
 
     public void epeeDanSaMain () {
@@ -162,7 +170,7 @@ public class Joueur extends Acteur {
         this.epeeActve = false;
         this.lanceActve = true;
         if(lanceActve==true && aLance==true){
-            System.out.println("HOHOHOHOHO  ");
+            //System.out.println("HOHOHOHOHO  ");
         }
     }
     public void craftEpee (InventaireVue inventaireVue) {
@@ -206,7 +214,23 @@ public class Joueur extends Acteur {
             }
         }
     }
-//    public void craftclee (){
+
+    public void attaque(){
+
+        for(int i = 0;i<getEnv().getListperso().size();++i ) {
+            if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 37) {
+                enleveVie(getEnv().getListperso().get(i));
+            }
+
+            if (getEnv().getListperso().get(i).estMort()) {
+                System.out.println("PIPIPIPIPPIPIIPIPIPI");
+            }
+        }
+    }
+
+
+
+    //    public void craftclee (){
 //        Clee c;
 //        if(inventaire.getBois==10 && inventaire.getPierre==10 && inventaire.getCuire==10){
 //            inventaire.add(c);
