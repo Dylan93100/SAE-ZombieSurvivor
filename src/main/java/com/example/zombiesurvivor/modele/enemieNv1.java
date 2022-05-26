@@ -10,6 +10,9 @@ private int vie;
     private int attaque;
     private int saut;
 
+    private  Terrain terrain;
+    boolean gravite;
+
 private Environnement env;
     private IntegerProperty xProperty;
     private IntegerProperty yProperty;
@@ -20,11 +23,29 @@ private Environnement env;
          vitesse = 2;
          attaque = 2;
          saut = 2;
+         terrain = new Terrain();
        this.env = env;
         this.xProperty = new SimpleIntegerProperty(x);
         this.yProperty = new SimpleIntegerProperty(y);
 
     }
+
+    public boolean isGravite() {
+        return gravite;
+    }
+
+    public void verifGravite() {
+        if (!terrain.tuileSol(this.getX(), this.getY() + 32)) {
+            this.gravite = true;
+        } else {
+            this.gravite = false;
+        }
+    }
+
+    public void setyValue(int n ) {
+        this.yProperty().setValue(this.yProperty().getValue()-n);
+    }
+
 
     public Environnement getEnv() {
         return env;
@@ -54,22 +75,43 @@ private Environnement env;
         this.xProperty.set(xProperty);
     }
 
+
     public void agir(JoueurVue jou) {
-        if (Math.random() * 4 > 2) {
-            int xDest = this.xProperty().getValue() + getVitesse();
-            if (this.env.getTerrain().tuileTraversable(getX() + 27, getY())) {
-                this.setX(xDest);
-                    attaqueDroit(jou);
-            }
-        }
-        if (Math.random() * 4 > 2) {
-            int yDest = this.xProperty().getValue() - getVitesse();
-            if (this.env.getTerrain().tuileTraversable(getX() + 5, getY())) {
-                this.setX(yDest);
-                    attaqueGauche(jou);
-            }
+
+        verifGravite();
+        System.out.println(getY());
+        isGravite();
+        avancerDroite(jou);
+        avancerGauche(jou);
+        if (isGravite()) {
+            setyValue(-3);
+            verifGravite();
         }
     }
+
+    public  void avancerDroite(JoueurVue jou){
+           isGravite();
+            if (Math.random() * 4 > 2) {
+        int xDest = this.xProperty().getValue() + getVitesse();
+        if (this.env.getTerrain().tuileTraversable(getX() + 27, getY())) {
+            this.setX(xDest);
+            attaqueDroit(jou);
+        }
+      }
+    }
+
+    public void avancerGauche(JoueurVue jou){
+     if (Math.random() * 4 > 2) {
+        int yDest = this.xProperty().getValue() - getVitesse();
+        if (this.env.getTerrain().tuileTraversable(getX() + 5, getY())) {
+            this.setX(yDest);
+            attaqueGauche(jou);
+        }
+    }
+
+    }
+
+
 
     public void enleveVie(Joueur personage) {
         personage.changeVie(attaque);
@@ -80,7 +122,7 @@ private Environnement env;
                 enleveVie(getEnv().getPersonage());
         }
         if(getEnv().getPersonage().estMort()) {
-           // jou.imageMort();
+            jou.imageMort();
         }
             }
     public void attaqueGauche(JoueurVue jou) {

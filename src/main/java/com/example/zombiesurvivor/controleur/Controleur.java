@@ -118,6 +118,13 @@ public class Controleur implements Initializable {
             if(key.getCode() == KeyCode.Z) {
                 this.env.getPersonage().haut();
 
+            }if(key.getCode() == KeyCode.DIGIT1) {
+          this.env.getPersonage().epeeDanSaMain();
+            }
+
+            if(key.getCode() == KeyCode.DIGIT2) {
+                this.env.getPersonage().lanceDanSaMain();
+
             }
         });
 
@@ -181,12 +188,12 @@ public class Controleur implements Initializable {
                     tic++;
 
                     inventaireVue.MAJ(env);
-                    System.out.println(env.getPersonage().getVie());
-                    this.env.getVache().agir();
-                    this.env.getPersonage().agir();
-                    this.env.getEnnemie().agir(joueurVue);
 
-//
+                    // System.out.println(env.getPersonage().getVie());
+                      //  this.env.getVache().agir();
+                       // this.env.getPersonage().agir();
+                     //   this.env.getEnnemie().agir(joueurVue);
+
 //                    System.out.println(env.getPersonage().getVie());
 //                    env.getEnnemie().attaque(joueurVue);
 //                    env.getEnnemie().enleveVie(env.getPersonage());

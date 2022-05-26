@@ -20,8 +20,8 @@ public class Environnement {
         listeVache = new ArrayList<>();
         this.terrain = new Terrain();
         this.personage = new Joueur(350,100,this);
-        this.ennemie = new enemieNv1(350,322,this);
-        this.vache = new Viande(366,322,this);
+        this.ennemie = new enemieNv1(350,300,this);
+        this.vache = new Viande(366,50,this);
         this.ajouterEnnemie();
         this.ajouterVache();
         System.out.println(terrain);

@@ -11,7 +11,13 @@ public class Joueur extends Acteur {
     Epee p = new Epee();
     Botte b = new Botte();
     Lance l = new Lance();
-    int change = getVitesse();
+    private boolean aLeppe;
+    private boolean aLance;
+
+    private boolean epeeActve;
+
+    private boolean lanceActve;
+
     private Boolean juste = false;
     private int tic = 0;
     private boolean animation = false;
@@ -23,7 +29,7 @@ public class Joueur extends Acteur {
 
     public Joueur (int x, int y, Environnement env) {
 
-        super(5, 2, 5, 3, x, y, env);
+        super(500, 2, 5, 3, x, y, env);
         inventaire = new Inventaire();
         pierre = new Pierre();
         vache = new Viande(0,0,null);
@@ -144,7 +150,21 @@ public class Joueur extends Acteur {
         this.up = false;
     }
 
+    public void epeeDanSaMain () {
 
+        this.lanceActve = false;
+        this.epeeActve = true;
+        if(epeeActve==true && aLeppe==true){
+            System.out.println("HAHAHAHA");
+        }
+    }
+    public void lanceDanSaMain () {
+        this.epeeActve = false;
+        this.lanceActve = true;
+        if(lanceActve==true && aLance==true){
+            System.out.println("HOHOHOHOHO  ");
+        }
+    }
     public void craftEpee (InventaireVue inventaireVue) {
 
         System.out.println(inventaire.toString());
@@ -154,6 +174,7 @@ public class Joueur extends Acteur {
                 pierre.setQuantité(pierre.getQuantité() - 40);
                 bois.setQuantité(bois.getQuantité() - 60);
                 inventaireVue.aquesitionDeLepee();
+                        aLeppe = true;
             }
         }
     }
@@ -181,6 +202,7 @@ public class Joueur extends Acteur {
                 pierre.setQuantité(pierre.getQuantité() - 50);
                 vache.setQuantité(vache.getQuantité() - 30);
                 inventaireVue.aquesitionDeLance();
+                aLance = true;
             }
         }
     }
@@ -205,6 +227,10 @@ public class Joueur extends Acteur {
 
     public Inventaire getInventaire () {
         return inventaire;
+    }
+
+    public boolean isaLeppe () {
+        return aLeppe;
     }
 
     public Boolean getJuste () {
