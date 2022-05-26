@@ -100,7 +100,9 @@ private Environnement env;
             this.setX(xDest);
             attaqueDroit(jou);
         }
-      }
+      }else{
+                avancerGauche(jou);
+            }
     }
 
     public void avancerGauche(JoueurVue jou){
@@ -109,6 +111,9 @@ private Environnement env;
         if (this.env.getTerrain().tuileTraversable(getX() + 5, getY())) {
             this.setX(yDest);
             attaqueGauche(jou);
+        }
+        else{
+            avancerDroite(jou);
         }
     }
 

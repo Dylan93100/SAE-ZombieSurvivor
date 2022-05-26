@@ -26,7 +26,7 @@ public class Environnement {
        // this.ennemie.
         this.vache = new Viande(366,50,this);
         this.ajouterEnnemie();
-//        this.ajouterEnnemie();
+        this.ajouterEnnemie();
         this.ajouterVache();
         System.out.println(terrain);
     }

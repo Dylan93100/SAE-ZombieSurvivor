@@ -97,6 +97,8 @@ public class Controleur implements Initializable {
 
         PnjVue pnjvue = new PnjVue(paneRacine,env.getVache(),env);
 
+
+
         initAnimation();
 
         // demarre l'animation
@@ -195,11 +197,8 @@ public class Controleur implements Initializable {
                     tic++;
 
                     inventaireVue.MAJ(env);
-
-                   // for (int i = 0;i<env.getListperso().size();i++) {
-                     //   System.out.println(env.getListperso().get(i).getVie());
-                    //}
-                    this.env.vacheDeLaListeAgit();
+                    System.out.println(env.getListperso());
+                        this.env.vacheDeLaListeAgit();
                         this.env.getPersonage().agir();
                         this.env.ennemieDeLaListeAgit(joueurVue);
 

@@ -106,10 +106,6 @@ public class Joueur extends Acteur {
         }
     }
 
-    public boolean isUp () {
-        return up;
-    }
-
     public void seDeplpaceGacuhe () {
 
         int yDest = this.xProperty().getValue() - getVitesse();
@@ -162,9 +158,7 @@ public class Joueur extends Acteur {
 
         this.lanceActve = false;
         this.epeeActve = true;
-        if(epeeActve==true && aLeppe==true){
-            System.out.println("HAHAHAHA");
-        }
+
     }
     public void lanceDanSaMain () {
         this.epeeActve = false;
@@ -215,15 +209,30 @@ public class Joueur extends Acteur {
         }
     }
 
-    public void attaque(){
+    public void attaque() {
 
-        for(int i = 0;i<getEnv().getListperso().size();++i ) {
-            if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 37) {
-                enleveVie(getEnv().getListperso().get(i));
+        if (aLeppe == true && epeeActve == true) {
+            System.out.println("ATTTTAQUE");
+            for (int i = 0; i < getEnv().getListperso().size(); ++i) {
+                if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 37) {
+                    enleveVie(getEnv().getListperso().get(i));
+                }
+
+                if (getEnv().getListperso().get(i).estMort()) {
+                    System.out.println("PIPIPIPIPPIPIIPIPIPI");
+                }
             }
 
-            if (getEnv().getListperso().get(i).estMort()) {
-                System.out.println("PIPIPIPIPPIPIIPIPIPI");
+        }if (aLance == true && lanceActve == true) {
+            System.out.println("SAAAAAALUUUTUTUTUTUTT");
+            for (int i = 0; i < getEnv().getListperso().size(); ++i) {
+                if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 50) {
+                    enleveVie(getEnv().getListperso().get(i));
+                }
+
+                if (getEnv().getListperso().get(i).estMort()) {
+                    System.out.println("OPOOPOPOPOOOPOPOPOP");
+                }
             }
         }
     }

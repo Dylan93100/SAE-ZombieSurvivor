@@ -31,7 +31,7 @@ private Environnement env;
     private void afficherPnj() {
 
         Image vache = new Image(Main.class.getResource("images/arbre.png").toString());
-        Image ennemie = new Image(Main.class.getResource("images/lance.png").toString());
+        Image ennemie = new Image(Main.class.getResource("cheval/lance.png").toString());
         Image ennemie2 = new Image(Main.class.getResource("images/lance.png").toString());
 
 
