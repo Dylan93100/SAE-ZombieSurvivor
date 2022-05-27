@@ -31,8 +31,8 @@ private Environnement env;
     private void afficherPnj() {
 
         Image vache = new Image(Main.class.getResource("images/arbre.png").toString());
-        Image ennemie = new Image(Main.class.getResource("cheval/lance.png").toString());
-        Image ennemie2 = new Image(Main.class.getResource("images/lance.png").toString());
+        Image ennemie = new Image(Main.class.getResource("images/lance.png").toString());
+       // Image ennemie2 = new Image(Main.class.getResource("images/lance.png").toString());
 
 
         vacheV = new ImageView(vache);
@@ -45,10 +45,10 @@ private Environnement env;
         enemieV.translateYProperty().bind(env.ennemieDeLaListeYproperty());
         paneRacine.getChildren().add(enemieV);
 
-        enemieVV = new ImageView(ennemie2);
-        enemieVV.translateXProperty().bind(env.ennemieDeLaListeXproperty());
-        enemieVV.translateYProperty().bind(env.ennemieDeLaListeYproperty());
-        paneRacine.getChildren().add(enemieVV);
+       // enemieVV = new ImageView(ennemie2);
+       // enemieVV.translateXProperty().bind(env.ennemieDeLaListeXproperty());
+       // enemieVV.translateYProperty().bind(env.ennemieDeLaListeYproperty());
+       // paneRacine.getChildren().add(enemieVV);
 
     }
 }
