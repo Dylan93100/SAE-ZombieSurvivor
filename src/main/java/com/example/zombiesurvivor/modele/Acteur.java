@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 public abstract class  Acteur {
     protected static IntegerProperty XProperty;
     protected static IntegerProperty YProperty;
-    private int vie;
+        private IntegerProperty vie;
     private int vitesse;
     private int y;
     private int x;
@@ -16,8 +16,8 @@ public abstract class  Acteur {
     protected Terrain terrain;
     private boolean gravite;
 
-    public Acteur (int vie, int vitesse, int attaque, int saut,int x,int y, Environnement env){
-        this.vie = vie;
+    public Acteur (int vitesse, int attaque, int saut,int x,int y, Environnement env){
+        this.vie = new SimpleIntegerProperty(500);
         this.vitesse = vitesse;
         this.attaque = attaque;
         this.saut = saut;
@@ -41,9 +41,6 @@ public abstract class  Acteur {
         else {
             this.gravite =false;
         }
-    }
-    public Terrain getTerrain() {
-        return terrain;
     }
 
     public Environnement getEnv() {
@@ -90,12 +87,16 @@ public abstract class  Acteur {
         this.xProperty().setValue(this.xProperty().getValue()-n);
     }
 
-    public int getVie() {
+    public int getVie () {
+        return vie.get();
+    }
+
+    public IntegerProperty vieProperty () {
         return vie;
     }
 
-    public void setVie(int vie) {
-        this.vie = vie;
+    public void setVie (int vie) {
+        this.vie.set(vie);
     }
 
     public void changeVie(int degat) {
@@ -114,11 +115,11 @@ public abstract class  Acteur {
     }
 
     public boolean estMort (){
-        return this.vie<=0;
-    }
+        return getVie()<=0;
+}
 
     public boolean estVivant (){
-        return this.vie>0;
+        return this.getVie()>0;
     }
 
     public void limitationMapX() {

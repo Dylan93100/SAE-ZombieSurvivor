@@ -71,7 +71,7 @@ public class Viande extends Ressource {
 
 
     public void agir () {
-        env.ennemieVache();
+        env.vacheEliminee();
         verifGravite();
         allerAdroite();
         allerAgauche();

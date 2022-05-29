@@ -1,25 +1,33 @@
 package com.example.zombiesurvivor.vue;
 
 import com.example.zombiesurvivor.Main;
+import com.example.zombiesurvivor.modele.Environnement;
+import com.example.zombiesurvivor.modele.Joueur;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import com.example.zombiesurvivor.modele.Joueur;
+import javafx.scene.paint.Color;
 
 
 public class JoueurVue {
 
     private static Pane paneRacine;
+    private final Environnement env;
     private Joueur joueur;
     private static ImageView backD;
     private static ImageView backG;
     private static ImageView backDr;
     private static ImageView backGr;
 
+    private Label labelVie = new Label("5");
 
-    public  JoueurVue(Pane paneRacine, Joueur joueur) {
+
+
+    public  JoueurVue(Pane paneRacine, Joueur joueur, Environnement env) {
         this.paneRacine = paneRacine;
         this.joueur = joueur;
+        this.env = env;
         this.afficherJoueur();
     }
 
@@ -60,6 +68,11 @@ public class JoueurVue {
         backD.translateXProperty().bind(joueur.xProperty());
         backD.translateYProperty().bind(joueur.yProperty());
         paneRacine.getChildren().add(backD);
+
+        labelVie.setTranslateX(50);
+        labelVie.setTranslateY(20);
+        labelVie.setTextFill(Color.WHITE);
+        paneRacine.getChildren().add(labelVie);
 
     }
     public static void apparanceDroite() {
@@ -108,16 +121,10 @@ public class JoueurVue {
 
     }
 
-//	public static void limitationMapX() {
-//		if(Joueur.xProperty().getValue()>935) {
-//			Joueur.setxValue(3);
-//			System.out.println("Vous avez atteint la limte de la map");
-//		}
-//		if(Joueur.xProperty().getValue()<-5) {
-//			Joueur.setxValue(-3);
-//			System.out.println("Vous avez atteint la limte de la map");
-//		}
-//	}
-//
+public void affichageVie(){
+
+    labelVie.textProperty().bind(env.getPersonage().vieProperty().asString());
+
+}
 
 }

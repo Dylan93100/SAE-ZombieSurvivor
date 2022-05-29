@@ -91,7 +91,7 @@ public class Controleur implements Initializable {
 
         TerrainVue terrainVue = new TerrainVue(env.getTerrain(), paneTerrain);
 
-        joueurVue = new JoueurVue(paneRacine,env.getPersonage());
+        joueurVue = new JoueurVue(paneRacine,env.getPersonage(),env);
 
          inventaireVue = new InventaireVue(paneRacine,env,VboxRacine);
 
@@ -134,6 +134,8 @@ public class Controleur implements Initializable {
             }
             if(key.getCode() == KeyCode.DIGIT3) {
                 this.env.getPersonage().mange();
+               // this.env.getPersonage().mangePas();
+
             }
         });
 
@@ -203,6 +205,8 @@ public class Controleur implements Initializable {
                     tic++;
 
                     inventaireVue.MAJ(env);
+                    joueurVue.affichageVie();
+
                     System.out.println(env.getListperso());
                   //  System.out.println(env.getListeVache());
 

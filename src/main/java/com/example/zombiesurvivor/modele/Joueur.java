@@ -31,7 +31,7 @@ public class Joueur extends Acteur {
 
     public Joueur (int x, int y, Environnement env) {
 
-        super(500, 2, 5, 3, x, y, env);
+        super(2, 5, 3, x, y, env);
         inventaire = new Inventaire();
         pierre = new Pierre();
         vache = new Viande(0,0,null);
@@ -224,36 +224,61 @@ public class Joueur extends Acteur {
 
     public void attaque() {
 
-        if (aLeppe == true && epeeActve == true) {
-            System.out.println("ATTTTAQUE");
-            for (int i = 0; i < getEnv().getListperso().size(); ++i) {
+        for (int i = 0; i < getEnv().getListperso().size(); ++i) {
+            if (aLeppe == true && epeeActve == true) {
+                System.out.println("ATTTTAQUE");
                 if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 37) {
                     enleveVieEnnemie(getEnv().getListperso().get(i));
                 }
                 if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 37) {
                     enleveVieVache(getEnv().getListeVache().get(i));
                 }
-                    if (getEnv().getListperso().get(i).estMort()) {
+                if (getEnv().getListperso().get(i).estMort()) {
                     System.out.println("PIPIPIPIPPIPIIPIPIPI");
                 }
             }
 
-        }if (aLance == true && lanceActve == true) {
-            System.out.println("SAAAAAALUUUTUTUTUTUTT");
-            for (int i = 0; i < getEnv().getListperso().size(); ++i) {
-                if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 50) {
-                    enleveVieEnnemie(getEnv().getListperso().get(i));
+            if (aLance == true && lanceActve == true) {
+                System.out.println("SAAAAAALUUUTUTUTUTUTT");
+                    if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 50) {
+                        enleveVieEnnemie(getEnv().getListperso().get(i));
+                    }
+
+                    if (getEnv().getListperso().get(i).estMort()) {
+                        System.out.println("OPOOPOPOPOOOPOPOPOP");
+                    }
+                }
+            }
+
+        //ATTAQUE VACHE
+        for (int i = 0; i < getEnv().getListeVache().size(); ++i) {
+            if (aLeppe == true && epeeActve == true) {
+                System.out.println("ATTTTAQUE");
+                if (this.getY() - 5 <= getEnv().getListeVache().get(i).getYProperty() && getEnv().getListeVache().get(i).getYProperty() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListeVache().get(i).getXProperty() && getEnv().getListeVache().get(i).getXProperty() <= this.getX() + 37) {
+                    enleveVieVache(getEnv().getListeVache().get(i));
+                }
+                if (getEnv().getListeVache().get(i).estMort()) {
+                    System.out.println("PIPIPIPIPPIPIIPIPIPI");
+                }
+            }
+
+            if (aLance == true && lanceActve == true) {
+                System.out.println("SAAAAAALUUUTUTUTUTUTT");
+                if (this.getY() - 5 <= getEnv().getListeVache().get(i).getYProperty() && getEnv().getListeVache().get(i).getYProperty() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListeVache().get(i).getXProperty() && getEnv().getListeVache().get(i).getXProperty() <= this.getX() + 50) {
+                    enleveVieVache(getEnv().getListeVache().get(i));
                 }
 
-                if (getEnv().getListperso().get(i).estMort()) {
+                if (getEnv().getListeVache().get(i).estMort()) {
                     System.out.println("OPOOPOPOPOOOPOPOPOP");
                 }
             }
         }
-    }
+
+        }
+
 
     public void recupererVie(){
-        if(vache.getQuantité()>=0){
+        if(vache.getQuantité()>0){
             setVie(getVie()+1);
             vache.setQuantité(vache.getQuantité()-1);
         }

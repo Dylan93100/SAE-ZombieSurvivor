@@ -22,9 +22,6 @@ public class Environnement {
         listeVache = new ArrayList<Viande>();
         this.terrain = new Terrain();
         this.personage = new Joueur(350,100,this);
-        //this.ennemie = new enemieNv1((int) aleatoire(),300,this);
-       // this.ennemie.
-      //  this.vache = new Viande(366,50,this);
         this.ajouterEnnemie();
         this.ajouterEnnemie();
         this.ajouterVache();
@@ -100,7 +97,7 @@ public class Environnement {
             }
         }
     }
-    public void ennemieVache(){
+    public void vacheEliminee (){
 
         for(int i = listeVache.size()-1;i>=0;i--){
             System.out.println(listeVache.get(i).getVie());
