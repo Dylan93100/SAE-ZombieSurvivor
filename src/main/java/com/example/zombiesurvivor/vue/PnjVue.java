@@ -36,8 +36,8 @@ private Environnement env;
 
 
         vacheV = new ImageView(vache);
-        vacheV.translateXProperty().bind(vacher.XPropertyProperty());
-        vacheV.translateYProperty().bind(vacher.YPropertyProperty());
+        vacheV.translateXProperty().bind(env.vacheDeLaListeXproperty());
+        vacheV.translateYProperty().bind(env.vacheDeLaListeYproperty());
         paneRacine.getChildren().add(vacheV);
 
         enemieV = new ImageView(ennemie);

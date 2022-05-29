@@ -37,6 +37,8 @@ public class Viande extends Ressource {
         return XProperty.get();
     }
 
+
+
     public void setyValue(int n) {
         this.YPropertyProperty().setValue(this.YPropertyProperty().getValue() - n);
     }
@@ -44,6 +46,8 @@ public class Viande extends Ressource {
     public IntegerProperty XPropertyProperty() {
         return XProperty;
     }
+
+
 
     public int getYProperty() {
         return YProperty.get();
@@ -67,6 +71,7 @@ public class Viande extends Ressource {
 
 
     public void agir () {
+        env.ennemieVache();
         verifGravite();
         allerAdroite();
         allerAgauche();
@@ -94,7 +99,12 @@ public class Viande extends Ressource {
             }
         }
     }
+
+    public boolean estMort () {
+        return vie <= 0;
+    }
 }
+
 
 
 //	@Override

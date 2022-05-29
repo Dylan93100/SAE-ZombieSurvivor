@@ -2,19 +2,18 @@ package com.example.zombiesurvivor.modele;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
 
 public class Ressource extends Item {
 
-	private int pv ;
+	int vie;
 	private IntegerProperty quantité ;
 	
 	public Ressource (int pv ) {
-		this.pv = pv ;
+		this.vie = pv ;
 		quantité = new SimpleIntegerProperty();
 	}
-	public int getPv() {
-		return pv;
+	public int getVie () {
+		return vie;
 	}
 
 	public int getQuantité () {

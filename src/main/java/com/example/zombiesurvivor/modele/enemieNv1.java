@@ -30,6 +30,9 @@ private Environnement env;
 
     }
 
+public boolean ennemieMort(){
+        return vie<=0;
+}
     public boolean isGravite() {
         return gravite;
     }
@@ -82,6 +85,7 @@ private Environnement env;
 
     public void agir(JoueurVue jou) {
 
+        env.ennemieElimine();
         verifGravite();
         isGravite();
         avancerDroite(jou);

@@ -132,6 +132,9 @@ public class Controleur implements Initializable {
                 this.env.getPersonage().attaqueOui();
 
             }
+            if(key.getCode() == KeyCode.DIGIT3) {
+                this.env.getPersonage().mange();
+            }
         });
 
         Border1.addEventFilter(KeyEvent.KEY_RELEASED, (key)->
@@ -151,6 +154,9 @@ public class Controleur implements Initializable {
             if(key.getCode() == KeyCode.CONTROL) {
             this.env.getPersonage().attaquePas();
         }
+            if(key.getCode() == KeyCode.DIGIT3) {
+                this.env.getPersonage().mangePas();
+            }
 
         });
 
@@ -198,7 +204,9 @@ public class Controleur implements Initializable {
 
                     inventaireVue.MAJ(env);
                     System.out.println(env.getListperso());
-                        this.env.vacheDeLaListeAgit();
+                  //  System.out.println(env.getListeVache());
+
+                    this.env.vacheDeLaListeAgit();
                         this.env.getPersonage().agir();
                         this.env.ennemieDeLaListeAgit(joueurVue);
 

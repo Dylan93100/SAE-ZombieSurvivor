@@ -16,6 +16,8 @@ public class Joueur extends Acteur {
     private boolean ouiOuNon;
     private boolean epeeActve;
 
+    private boolean mange;
+
     private boolean lanceActve;
 
     private Boolean juste = false;
@@ -82,6 +84,9 @@ public class Joueur extends Acteur {
          if(ouiOuNon == true){
            attaque();
         }
+         if(mange==true){
+             recupererVie();
+         }
 
         if (isGravite()) {
             setyValue(-3);
@@ -136,6 +141,10 @@ public class Joueur extends Acteur {
 
     }
 
+    public void mange(){
+        this.mange = true;
+    }
+
     public void neVaPLusADroite () {
         this.right = false;
 
@@ -166,6 +175,10 @@ public class Joueur extends Acteur {
         if(lanceActve==true && aLance==true){
             //System.out.println("HOHOHOHOHO  ");
         }
+    }
+
+    public void mangePas(){
+        this.mange = false;
     }
     public void craftEpee (InventaireVue inventaireVue) {
 
@@ -215,10 +228,12 @@ public class Joueur extends Acteur {
             System.out.println("ATTTTAQUE");
             for (int i = 0; i < getEnv().getListperso().size(); ++i) {
                 if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 37) {
-                    enleveVie(getEnv().getListperso().get(i));
+                    enleveVieEnnemie(getEnv().getListperso().get(i));
                 }
-
-                if (getEnv().getListperso().get(i).estMort()) {
+                if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 37) {
+                    enleveVieVache(getEnv().getListeVache().get(i));
+                }
+                    if (getEnv().getListperso().get(i).estMort()) {
                     System.out.println("PIPIPIPIPPIPIIPIPIPI");
                 }
             }
@@ -227,7 +242,7 @@ public class Joueur extends Acteur {
             System.out.println("SAAAAAALUUUTUTUTUTUTT");
             for (int i = 0; i < getEnv().getListperso().size(); ++i) {
                 if (this.getY() - 5 <= getEnv().getListperso().get(i).getY() && getEnv().getListperso().get(i).getY() <= this.getY() + 5 && this.getX() - 5 <= getEnv().getListperso().get(i).getX() && getEnv().getListperso().get(i).getX() <= this.getX() + 50) {
-                    enleveVie(getEnv().getListperso().get(i));
+                    enleveVieEnnemie(getEnv().getListperso().get(i));
                 }
 
                 if (getEnv().getListperso().get(i).estMort()) {
@@ -237,7 +252,13 @@ public class Joueur extends Acteur {
         }
     }
 
+    public void recupererVie(){
+        if(vache.getQuantité()>=0){
+            setVie(getVie()+1);
+            vache.setQuantité(vache.getQuantité()-1);
+        }
 
+    }
 
     //    public void craftclee (){
 //        Clee c;
